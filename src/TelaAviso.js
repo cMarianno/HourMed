@@ -2,8 +2,13 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { useFonts } from 'expo-font';
+import { useNavigation } from '@react-navigation/native'
 
 export default function TelaAviso() {
+
+  const navigation = useNavigation();
+
+  setTimeout(() => {navigation.navigate('TelaLogin');}, 5000)
 
   const [loaded] = useFonts({
     Roboto: require('../assets/fonts/Roboto-Thin.ttf'),
