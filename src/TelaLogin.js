@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, TouchableOpacity, Text, View, Image } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View, Image, TextInput } from 'react-native';
 import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native'
 
@@ -13,7 +13,7 @@ export default function TelaLogin() {
     }
 
     function handlePressEntrar(){
-        navigation.navigate('TelaEntrar');
+        navigation.navigate('TelaMedicacao');
     }
 
     const [loaded] = useFonts({
@@ -26,38 +26,44 @@ export default function TelaLogin() {
 
     return (
         <View style={styles.container}>
-        <Image
-            style={styles.logo}
-            source={ require('../assets/logo.png') }
-        />
-
-        <TouchableOpacity
-            style={styles.buttons}
-            activeOpacity={0.8}
-            onPress={handlePressCriarConta}
-        >
-            <Text style={styles.textConta}>CRIAR CONTA</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-            style={styles.buttons}
-            activeOpacity={0.8}
-            onPress={handlePressEntrar}
-        >
-            <Text style={styles.textEntrar}>ENTRAR</Text>
-        </TouchableOpacity>
-
-        <Text style={styles.text}>Criando a conta você concorda {"\n"} com os <Text style={styles.textMarcado}>Termos de Serviço</Text> e {"\n"} <Text style={styles.textMarcado}>Política de Privacidade.</Text></Text>
-        <StatusBar style="auto" />
-        </View>
-    );
-}
-
-const styles = StyleSheet.create({
+            
+            <Image
+                style={styles.logo}
+                source={ require('../assets/logo.png') }
+            />
+        
+            <View style={styles.viewInput}>  
+                
+                <TextInput style={styles.input1}  
+                placeholder = "E-MAIL"
+                />
+                
+                <TextInput style={styles.input2}   
+                secureTextEntry={true}
+                placeholder = "SENHA"
+                />
+        
+                <TouchableOpacity
+                style={styles.button2}
+                activeOpacity={0.8}
+                >
+                <Text style={styles.textEntrar}>ENTRAR</Text>
+                </TouchableOpacity>
+        
+            </View>
+            <Text style={styles.text}>Não possui uma conta? <Text style={styles.textMarcado}>Crie uma</Text>{"\n"} nova conta</Text>
+            <StatusBar style="auto" />
+            </View>
+        );
+    }
+    
+    const styles = StyleSheet.create({
     container: {
         flex: 1,
+        flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'flex-start',
+        height: '100%',
+        justifyContent: 'space-around',
         backgroundColor: '#EDFBFD',
     },
     logo: {
@@ -66,24 +72,25 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         marginTop: 49,
     },
-    buttons: {
-        borderRadius: 8,
-        marginTop: 30,
-        backgroundColor: "#12003C",
+    viewInput:{
+        justifyContent: 'space-between',
+        marginTop: 80
     },
-    textConta: {
-        color: "#fff",
-        paddingLeft: 110,
-        paddingTop: 10,
-        paddingRight: 111,
-        paddingBottom: 11,
+    input1: { 
+        marginTop: 10,
+        width:300,
+        backgroundColor: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
+        borderRadius: 3,
     },
-    textEntrar: {
-        color: "#fff",
-        paddingLeft: 130,
-        paddingTop: 10,
-        paddingRight: 131,
-        paddingBottom: 11,
+    input2: {
+        marginTop: 15,
+        width:300,
+        backgroundColor: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
+        borderRadius: 3,
     },
     text: {
         width: 350,
@@ -97,5 +104,10 @@ const styles = StyleSheet.create({
     },
     textMarcado: {
         color: "#00ace7",
-    }
+    },
+    button2: {
+        borderRadius: 8,
+        marginTop: 20,
+        backgroundColor: "#12003C",
+    },
 });
