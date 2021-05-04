@@ -10,7 +10,7 @@ export default function TelaMedicacao() {
     const navigation = useNavigation();
 
     function handlePress(){
-        navigation.navigate('TelaLogin');
+        navigation.navigate('TelaAdicionarTarefa');
     }
 
     const [loaded] = useFonts({

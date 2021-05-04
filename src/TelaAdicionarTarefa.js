@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, Div, View, Image,ImageBackground } from 'react-native';
+import { StyleSheet, Text, Div, View, Image,ImageBackground, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native'
 import { color } from 'react-native-reanimated';
@@ -9,6 +9,14 @@ import { Header } from 'react-native/Libraries/NewAppScreen';
 export default function TelaAdicionarTarefa() {
 
   const navigation = useNavigation();
+
+  function handlePressResponsavel(){
+    navigation.navigate('TelaResponsavel');
+  }
+
+  function handlePressReceitas(){
+    navigation.navigate('TelaReceitas');
+  }
 
   const [loaded] = useFonts({
     Roboto: require('../assets/fonts/Roboto-Thin.ttf'),
@@ -31,8 +39,12 @@ export default function TelaAdicionarTarefa() {
       <View style={styles.espacos}></View>
       <View style={styles.footer}>
         <Image style={styles.icons} source={require('../assets/IconHoje.png')}></Image>
-        <Image style={styles.icons} source={require('../assets/IconResponsavel.png')}></Image>
-        <Image style={styles.icons} source={require('../assets/IconReceitas.png')}></Image>
+        <TouchableOpacity style={styles.icons} activeOpacity={0.8} onPress={handlePressResponsavel}>
+          <Image  source={require('../assets/IconResponsavel.png')}></Image>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.icons} activeOpacity={0.8} onPress={handlePressReceitas}>
+          <Image  source={require('../assets/IconReceitas.png')}></Image>
+        </TouchableOpacity>
       </View>
       <StatusBar style="auto" />
     </View>

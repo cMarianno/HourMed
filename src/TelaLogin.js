@@ -25,34 +25,35 @@ export default function TelaLogin() {
     }
 
     return (
-        <View style={styles.container}>
+            <View style={styles.container}>
             
-            <Image
-                style={styles.logo}
-                source={ require('../assets/logo.png') }
-            />
-        
-            <View style={styles.viewInput}>  
-                
-                <TextInput style={styles.input1}  
-                placeholder = "E-MAIL"
+                <Image
+                    style={styles.logo}
+                    source={ require('../assets/logo.png') }
                 />
-                
-                <TextInput style={styles.input2}   
-                secureTextEntry={true}
-                placeholder = "SENHA"
-                />
-        
-                <TouchableOpacity
-                style={styles.button2}
-                activeOpacity={0.8}
-                >
-                <Text style={styles.textEntrar}>ENTRAR</Text>
-                </TouchableOpacity>
-        
-            </View>
-            <Text style={styles.text}>Não possui uma conta? <Text style={styles.textMarcado}>Crie uma</Text>{"\n"} nova conta</Text>
-            <StatusBar style="auto" />
+            
+                <View style={styles.viewInput}>  
+                    
+                    <TextInput style={styles.input1}  
+                        placeholder = "E-MAIL"
+                    />
+                    
+                    <TextInput style={styles.input2}   
+                        secureTextEntry={true}
+                        placeholder = "SENHA"
+                    />
+            
+                    <TouchableOpacity
+                        style={styles.button2}
+                        activeOpacity={0.8}
+                        onPress={handlePressEntrar}
+                        >
+                        <Text style={styles.textEntrar}>ENTRAR</Text>
+                    </TouchableOpacity>
+            
+                </View>
+                <Text style={styles.text}>Não possui uma conta? <Text style={styles.textMarcado} onPress={handlePressCriarConta}>Crie uma</Text>{"\n"} nova conta</Text>
+                <StatusBar style="auto" />
             </View>
         );
     }
@@ -67,8 +68,8 @@ export default function TelaLogin() {
         backgroundColor: '#EDFBFD',
     },
     logo: {
-        width: 246,
-        height: 262,
+        width: "246%",
+        height: "30%",
         resizeMode: 'contain',
         marginTop: 49,
     },
@@ -79,6 +80,7 @@ export default function TelaLogin() {
     input1: { 
         marginTop: 10,
         width:300,
+        height:50,
         backgroundColor: '#fff',
         fontSize: 16,
         fontWeight: 'bold',
@@ -87,6 +89,7 @@ export default function TelaLogin() {
     input2: {
         marginTop: 15,
         width:300,
+        height:50,
         backgroundColor: '#fff',
         fontSize: 16,
         fontWeight: 'bold',
@@ -105,9 +108,17 @@ export default function TelaLogin() {
     textMarcado: {
         color: "#00ace7",
     },
-    button2: {
-        borderRadius: 8,
-        marginTop: 20,
+    textEntrar: {
+        paddingTop: 8,
+        width:300,
+        height:42,
         backgroundColor: "#12003C",
+        color: '#fff',
+        marginTop: 20,
+        borderRadius: 3,
+        fontSize: 16,
+        alignItems: 'center',
+        justifyContent:'center',
+        textAlign: 'center', 
     },
 });
