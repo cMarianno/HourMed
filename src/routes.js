@@ -23,7 +23,8 @@ export default function Routes(){
                 <Screen name="TelaAviso" component={TelaAviso}/>
                 <Screen name="TelaLogin" component={TelaLogin}/>
                 <Screen name="TelaMedicacao" component={TelaMedicacao}/>
-                <Screen name="TelaUsuarioComum" component={TelaUsuarioComum}/>
+                <Screen name="TelaUsuarioComum" component={TelaUsuarioComum} // tela de criar conta
+                /> 
                 <Screen name="TelaEntrar" component={TelaEntrar}/>
                 <Screen name="TelaRegistrarMedicamento" component={TelaRegistrarMedicamento}/>
                 <Screen name="TelaConfirmado" component={TelaConfirmado}/>
