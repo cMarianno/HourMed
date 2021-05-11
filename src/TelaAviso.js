@@ -38,14 +38,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#EDFBFD',
   },
   logo: {
-    width: 246,
-    height: 262,
+    width: "246%",
+    height: "26%",
     resizeMode: 'contain',
     marginTop: 49,
   },
   text: {
-    width: 350,
-    height: 150,
+    width: "350%",
+    height: "15%",
     fontFamily: 'Roboto',
     fontSize: 18,
     textAlign: 'center',
