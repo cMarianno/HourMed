@@ -10,6 +10,7 @@ import TelaMedicacao from '../src/TelaMedicacao';
 import TelaLogin from '../src/TelaLogin';
 import TelaUsuarioComum from '../src/TelaUsuarioComum';
 import TelaEntrar from '../src/TelaEntrar';
+import TelaRegistrarMedicamento from '../src/TelaRegistrarMedicamento';
 
 export default function Routes(){
     return(
@@ -20,6 +21,7 @@ export default function Routes(){
                 <Screen name="TelaLogin" component={TelaLogin}/>
                 <Screen name="TelaUsuarioComum" component={TelaUsuarioComum}/>
                 <Screen name="TelaEntrar" component={TelaEntrar}/>
+                <Screen name="TelaRegistrarMedicamento" component={TelaRegistrarMedicamento}/>
             </Navigator>
         </NavigationContainer>
     );
