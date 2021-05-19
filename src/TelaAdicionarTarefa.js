@@ -38,12 +38,12 @@ export default function TelaAdicionarTarefa() {
       <Text style={styles.textSecundario}>Adicione seu primeiro{"\n"}lembrete de medicamentos</Text>
       <View style={styles.espacos}></View>
       <View style={styles.footer}>
-        <Image style={styles.icons} source={require('../assets/IconHoje.png')}></Image>
-        <TouchableOpacity style={styles.icons} activeOpacity={0.8} onPress={handlePressResponsavel}>
-          <Image  source={require('../assets/IconResponsavel.png')}></Image>
+        <Image style={styles.icon1} source={require('../assets/img1.png')}></Image>
+        <TouchableOpacity style={styles.icon2} activeOpacity={0.8} onPress={handlePressResponsavel}>
+          <Image  source={require('../assets/img2.png')}></Image>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.icons} activeOpacity={0.8} onPress={handlePressReceitas}>
-          <Image  source={require('../assets/IconReceitas.png')}></Image>
+        <TouchableOpacity style={styles.icon3} activeOpacity={0.8} onPress={handlePressReceitas}>
+          <Image  source={require('../assets/img3.png')}></Image>
         </TouchableOpacity>
       </View>
       <StatusBar style="auto" />
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   header: {
     flex: 0.25,
     alignItems: 'center',
-    backgroundColor: '#3f00a8',
+    backgroundColor: '#47797C',
     paddingTop:50,
     width: "100%", 
   },
@@ -103,17 +103,26 @@ const styles = StyleSheet.create({
     marginTop:10
   },
   espacos:{
-    flex:0.25,
+    flex:0.40,
     width: "100%"
   },
   footer: {
     width:"100%",
-    flex:0.25,
-    backgroundColor:"#ffffff",
+    flex:0.20,
+    backgroundColor:"#b8d9dc",
     flexDirection: 'row'
   },
-  icons: {
+  icon1: {
     width:"33%",
     resizeMode: 'contain'
-  }
+  },
+  icon2: {
+    width:"33%",
+    resizeMode: 'contain'
+  },
+  icon3: {
+    width:"33%",
+    resizeMode: 'contain'
+  },
+
 });

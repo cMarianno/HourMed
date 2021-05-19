@@ -38,13 +38,15 @@ export default function TelaReceitas() {
       <Text style={styles.textSecundario}>Identifique diariamente os sintomas{"\n"}e eles farão parte do seu relatório {"\n"}de saúde.</Text>
       <View style={styles.espacos}></View>
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.icons} activeOpacity={0.8} onPress={handleAdicionarTarefas}>
-          <Image source={require('../assets/IconHoje.png')}></Image>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.icons} activeOpacity={0.8} onPress={handlePressResponsavel}>
-          <Image  source={require('../assets/IconResponsavel.png')}></Image>
-        </TouchableOpacity>
-        <Image style={styles.icons} source={require('../assets/IconReceitas.png')}></Image>
+      <Text style={styles.icon}></Text>
+      
+      <TouchableOpacity style={styles.icon1} activeOpacity={0.8} onPress={handleAdicionarTarefas}>
+        <Image source={require('../assets/img1.png')}></Image>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.icon2} activeOpacity={0.8} onPress={handlePressResponsavel}>
+          <Image source={require('../assets/img2.png')}></Image>
+      </TouchableOpacity>
+      <Image style={styles.icon3} source={require('../assets/img3.png')}></Image>
       </View>
       <StatusBar style="auto" />
     </View>
@@ -59,9 +61,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#EDFBFD',
   },
   header: {
-    flex: 0.20,
+    flex: 0.25,
     alignItems: 'center',
-    backgroundColor: '#3f00a8',
+    backgroundColor: '#47797C',
     paddingTop:50,
     width: "100%", 
   },
@@ -78,12 +80,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#ffffff',
     paddingTop:10,
-    paddingRight:220,
+    paddingRight:260,
     fontWeight: 'bold',
   },
   logo: {
     width: "90%",
-    height: "25%",
+    height: "15%",
     resizeMode: 'contain'
   },
   textPrincipal: {
@@ -91,7 +93,8 @@ const styles = StyleSheet.create({
     fontSize: 18, 
     fontWeight: 'bold',
     textAlign: 'center',
-    color: '#5e6465'
+    color: '#5e6465',
+    marginTop:10
   },
   textSecundario: {
     fontFamily: 'Roboto',
@@ -99,21 +102,33 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#5e6465',
-    marginTop:10,
-    lineHeight: 21
+    marginTop:10
   },
   espacos:{
-    flex:0.30,
+    flex:0.40,
     width: "100%"
   },
   footer: {
     width:"100%",
-    flex:0.25,
-    backgroundColor:"#ffffff",
+    flex:0.20,
+    backgroundColor:"#b8d9dc",
     flexDirection: 'row'
   },
-  icons: {
+  icon: {
+    width:"5%",
+    resizeMode: 'contain'
+  },
+  icon1: {
+    width:"28%",
+    resizeMode: 'contain'
+  },
+  icon2: {
     width:"33%",
     resizeMode: 'contain'
-  }
+  },
+  icon3: {
+    width:"33%",
+    resizeMode: 'contain'
+  },
+
 });
