@@ -40,8 +40,8 @@ export default function TelaReceitas() {
       </View>
       <View style={styles.espacos}></View>
       <Image style={styles.logo} source={ require('../assets/SintomasDiarios.png') }/>
-      <Text style={styles.textPrincipal}>SINTOMAS DIÁRIOS</Text>
-      <Text style={styles.textSecundario}>Receba lembretes de troca de receita,vencimento da receita e{"\n"}consulta médica{"\n"}.</Text>
+      <Text style={styles.textPrincipal}>TRATAMENTO</Text>
+      <Text style={styles.textSecundario}>Receba lembretes de vencimento{"\n"}da receita e consulta médica.</Text>
       <View style={styles.espacos}></View>
       <View style={styles.footer}>
       <Text style={styles.icon}></Text>
