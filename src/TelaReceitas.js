@@ -10,6 +10,10 @@ export default function TelaReceitas() {
 
   const navigation = useNavigation();
 
+  function handleAdicionar(){
+    navigation.navigate('TelaRegistrarMedicamento');
+  }
+
   function handleAdicionarTarefas(){
     navigation.navigate('TelaAdicionarTarefa');
   }
@@ -29,7 +33,9 @@ export default function TelaReceitas() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTextAdd}>Adicionar</Text>
+        <TouchableOpacity onPress={handleAdicionar}>
+          <Text style={styles.headerTextAdd}>Adicionar</Text>
+      </TouchableOpacity>
         <Text style={styles.headerTextResp}>RECEITAS</Text>
       </View>
       <View style={styles.espacos}></View>
