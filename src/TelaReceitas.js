@@ -41,7 +41,7 @@ export default function TelaReceitas() {
       <View style={styles.espacos}></View>
       <Image style={styles.logo} source={ require('../assets/SintomasDiarios.png') }/>
       <Text style={styles.textPrincipal}>SINTOMAS DIÁRIOS</Text>
-      <Text style={styles.textSecundario}>Identifique diariamente os sintomas{"\n"}e eles farão parte do seu relatório {"\n"}de saúde.</Text>
+      <Text style={styles.textSecundario}>Receba lembretes de troca de receita,vencimento da receita e{"\n"}consulta médica{"\n"}.</Text>
       <View style={styles.espacos}></View>
       <View style={styles.footer}>
       <Text style={styles.icon}></Text>
