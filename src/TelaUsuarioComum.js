@@ -13,26 +13,32 @@ export default function TelaUsuarioComum() {
     });
 
     const navigation = useNavigation();
-
+    
     if (!loaded) {
         return null;
     }
-
+    
     function handlePressConcluir(){
-        navigation.navigate('TelaRegistrarMedicamento');
+        navigation.navigate('TelaMedicacao');
     }
 
-    TelaUsuarioComum.state = {
+    function handlePressVoltar(){
+        navigation.navigate('TelaLogin');
+    }
+
+     TelaUsuarioComum.state = {
         who: 'usuario'
     }
 
-  return (
-    <View style={styles.container}>
-        <View style={styles.header}>
-            <Text style={styles.headerTextAdd}>Voltar</Text>
-            <Text style={styles.headerTextResp}>Crie sua Conta</Text>
-      </View>
-      <DropDownPicker
+    return (
+        <View style={styles.container}>
+        <View style={styles.espaco}></View>
+        <TouchableOpacity style={styles.button2} activeOpacity={0.8} onPress={handlePressVoltar}>
+          <Text style={styles.headerTxtVoltar}>Voltar</Text>
+        </TouchableOpacity>
+        <Text style={styles.headerTxt}>Crie sua conta</Text>
+
+        <DropDownPicker
                 items={[
                     {label: 'Usuário', value: 'usuario', icon: () => <Icon name="flag" size={18} color="#D5E8FE" />, hidden: true},
                     {label: 'Responsável', value: 'responsavel', icon: () => <Icon name="flag" size={18} color="#D5E8FE" />}
@@ -49,111 +55,103 @@ export default function TelaUsuarioComum() {
             })}>
         
         </DropDownPicker>
-       <View style={styles.espacos2}></View>
 
-       <Text style={styles.txtSubtitulo}>Nome:</Text>
-       <TextInput style={styles.txtInput}/>
-       <View style={styles.espacos2}></View>
+            <TextInput
+                style={styles.input}
+                secureTextEntry={true}
+                placeholder = "Nome"
+            />
 
-       <Text style={styles.txtSubtitulo}>Email:</Text>
-       <TextInput style={styles.txtInput}/>
-       <View style={styles.espacos2}></View>
-        
-       <Text style={styles.txtSubtitulo}>Senha:</Text>
-       <TextInput style={styles.txtInput}/>
-       <View style={styles.espacos2}></View>
+            <TextInput
+                style={styles.input}
+                secureTextEntry={true}
+                placeholder = "E-mail"
+            />
 
-       <Text style={styles.TxtConfirmarSenha}>Confirmar Senha:</Text>
-       <TextInput style={styles.txtInput}/>
-       <View style={styles.espacos2}></View>
-       <TouchableOpacity style={styles.BtnConcluir} activeOpacity={0.8} onPress={handlePressConcluir}>
-           <Text style={styles.BtnTxt}>Concluir</Text>
-       </TouchableOpacity>
-      <StatusBar style="auto" />
-    </View>
-  );
+            <TextInput
+                style={styles.input}
+                secureTextEntry={true}
+                placeholder = "Senha"
+            />
+
+             <TextInput
+                style={styles.input}
+                secureTextEntry={true}
+                placeholder = "Confirmar senha"
+             />
+
+        <View style={styles.espaco2}></View>
+
+            <TouchableOpacity style={styles.button2} activeOpacity={0.8} onPress={handlePressConcluir}>
+              <Text style={styles.textEntrar}>Concluir</Text>
+            </TouchableOpacity>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    backgroundColor: '#EDFBFD',
-  },
-  header: {
-    flex: 0.15,
-    alignItems: 'center',
-    backgroundColor: '#EDFBFD',
-    paddingTop:50,
-    width: "100%", 
-  },
-  headerTextAdd: {
-    fontFamily: 'Roboto',
-    fontSize: 18,
-    paddingTop: 2,
-    paddingRight:300,  
-    color: '#00498c',
-    fontWeight: 'bold',
-  },
-  txtSubtitulo:{
-    fontFamily: 'Roboto',
-    fontSize: 17,
-    paddingTop: 2,
-    paddingRight:260,  
-    color: '#00498c',
-    fontWeight: 'bold',
-    flex: 0.06
-  },
-  txtInput:{
-    fontFamily: 'Roboto',
-    fontSize: 1,
-    paddingRight:310,  
-    color: '#00498c',
-    fontWeight: 'bold',
-    flex: 0.05,
-    backgroundColor: "#055468",
-    borderRadius: 20,
-    backgroundColor: '#D5E8FE'
-  },
-  TxtConfirmarSenha:{
-    fontFamily: 'Roboto',
-    fontSize: 17,
-    paddingTop: 2,
-    paddingRight:160,  
-    color: '#00498c',
-    fontWeight: 'bold',
-    flex: 0.06
-  },
-  BtnConcluir:{
-    backgroundColor: "#000000",
-    paddingRight:150,  
-    color: '#ffffff',
-    fontWeight: 'bold',
-    flex: 0.05,
-    borderRadius: 20,
-    textAlign: 'center',
-    color: "#ffffff",
-    fontWeight: "bold",
-    fontSize: 15,
-    fontFamily: 'Roboto'
-  },
-  BtnTxt: {
-    color: "#ffffff",
-    fontWeight: "bold",
-    fontSize: 15,
-    fontFamily: 'Roboto'
-  },
-  headerTextResp: {
-    fontFamily: 'Roboto',
-    fontSize: 20,
-    color: '#00498c',
-    paddingTop:10,
-    fontWeight: 'bold',
-  },
-  espacos2:{
-    flex:0.03,
-    width: "100%"
-  }
-
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        backgroundColor: '#EDFBFD',
+    },
+    espaco:{
+      marginTop:80,
+      backgroundColor: '#000000'
+    },
+    espaco2:{
+      marginTop:20,
+      backgroundColor: '#000000'
+    },
+    headerTxtVoltar:{
+      fontWeight: "bold",
+      fontSize: 20,
+      paddingRight: 270,
+      paddingBottom: 20
+    },
+    headerTxt:{
+      fontWeight: "bold",
+      fontSize: 20
+    },
+    input:{
+        marginTop:30,
+        padding:10,
+        width:300,
+        backgroundColor: '#ffffff',
+        fontSize: 16,
+        fontWeight: 'bold',
+        borderRadius: 3
+    },
+    buttons: {
+        borderRadius: 8,
+        marginTop: 30,
+        backgroundColor: "#12003C",
+    },
+    text: {
+        width: 350,
+        height: 150,
+        fontFamily: 'Roboto',
+        fontSize: 14,
+        textAlign: 'center',
+        lineHeight: 17,
+        color: '#00498c',
+        marginTop: 250
+    },
+    textMarcado: {
+        color: "#00ace7",
+    },
+    textEntrar: {
+        paddingTop: 8,
+        width:300,
+        height:42,
+        backgroundColor: "#12003C",
+        color: '#fff',
+        marginTop: 20,
+        borderRadius: 3,
+        fontSize: 16,
+        alignItems: 'center',
+        justifyContent:'center',
+        textAlign: 'center', 
+    },
 });
