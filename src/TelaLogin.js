@@ -1,99 +1,90 @@
 import React from 'react';
+import DropDownPicker from 'react-native-dropdown-picker';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, TouchableOpacity, Text, View, Image, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image} from 'react-native';
 import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native'
+
 
 export default function TelaLogin() {
 
     const navigation = useNavigation();
 
-    function handlePressCriarConta(){
-        navigation.navigate('TelaUsuarioComum');
-    }
+    const [loaded] = useFonts({
+        Roboto: require('../assets/fonts/Roboto-Thin.ttf'),
+    });
 
     function handlePressEntrar(){
         navigation.navigate('TelaMedicacao');
     }
-
-    const [loaded] = useFonts({
-        Roboto: require('../assets/fonts/Roboto-Thin.ttf'),
-    });
+    
+    function handlePressCriarConta(){
+        navigation.navigate('TelaUsuarioComum');
+    }
 
     if (!loaded) {
         return null;
     }
 
     return (
-            <View style={styles.container}>
-            
-                <Image
-                    style={styles.logo}
-                    source={ require('../assets/logo.png') }
-                />
-            
-                <View style={styles.viewInput}>  
-                    
-                    <TextInput style={styles.input1}  
-                        placeholder = "E-MAIL"
-                    />
-                    
-                    <TextInput style={styles.input2}   
-                        secureTextEntry={true}
-                        placeholder = "SENHA"
-                    />
-            
-                    <TouchableOpacity
-                        style={styles.button2}
-                        activeOpacity={0.8}
-                        onPress={handlePressEntrar}
-                        >
-                        <Text style={styles.textEntrar}>ENTRAR</Text>
-                    </TouchableOpacity>
-            
-                </View>
-                <Text style={styles.text}>Não possui uma conta? <Text style={styles.textMarcado} onPress={handlePressCriarConta}>Crie uma</Text>{"\n"} nova conta</Text>
-                <StatusBar style="auto" />
-            </View>
-        );
-    }
-    
-    const styles = StyleSheet.create({
+        <View style={styles.container}>
+        <View style={styles.espaco}></View>
+            <Image
+                style={styles.logo}
+                source={ require('../assets/logo.png') }
+            />
+           
+            <TextInput
+                style={styles.input}
+                placeholder = "E-mail"
+            />
+
+            <TextInput
+                style={styles.input}
+                secureTextEntry={true}
+                placeholder = "Senha"
+            />
+
+        <View style={styles.espaco2}></View>
+
+            <TouchableOpacity onPress={handlePressEntrar}>
+              <Text style={styles.textEntrar}>Entrar</Text>
+            </TouchableOpacity>
+
+            <Text style={styles.text}>Não possui uma conta? 
+            <Text style={styles.textMarcado} onPress={handlePressCriarConta}> Crie uma</Text>{"\n"} nova conta</Text>
+               <StatusBar style="auto" />
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'column',
         alignItems: 'center',
-        height: '100%',
-        justifyContent: 'space-around',
+        justifyContent: 'flex-start',
         backgroundColor: '#EDFBFD',
     },
-    logo: {
-        width: "246%",
-        height: "30%",
-        resizeMode: 'contain',
-        marginTop: 49,
+    espaco:{
+      marginTop:80,
+      backgroundColor: '#000000'
     },
-    viewInput:{
-        justifyContent: 'space-between',
-        marginTop: 80
+    espaco2:{
+      marginTop:20,
+      backgroundColor: '#000000'
     },
-    input1: { 
-        marginTop: 10,
+    logo:{
+        resizeMode: 'contain'
+    },
+    input:{
+        marginTop:30,
+        padding:10,
         width:300,
-        height:50,
-        backgroundColor: '#fff',
+        backgroundColor: '#ffffff',
         fontSize: 16,
         fontWeight: 'bold',
-        borderRadius: 3,
-    },
-    input2: {
-        marginTop: 15,
-        width:300,
-        height:50,
-        backgroundColor: '#fff',
-        fontSize: 16,
-        fontWeight: 'bold',
-        borderRadius: 3,
+        borderRadius: 3
     },
     text: {
         width: 350,
@@ -103,22 +94,22 @@ export default function TelaLogin() {
         textAlign: 'center',
         lineHeight: 17,
         color: '#00498c',
-        marginTop: 250
+        marginTop: 40
     },
     textMarcado: {
         color: "#00ace7",
     },
     textEntrar: {
-        paddingTop: 8,
+        paddingTop: 6,
         width:300,
         height:42,
         backgroundColor: "#12003C",
-        color: '#fff',
-        marginTop: 20,
+        color: '#ffffff',
         borderRadius: 3,
         fontSize: 16,
         alignItems: 'center',
         justifyContent:'center',
-        textAlign: 'center', 
+        textAlign: 'center',
+        marginTop: 5
     },
 });
