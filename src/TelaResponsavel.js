@@ -18,6 +18,10 @@ export default function TelaResponsavel() {
     navigation.navigate('TelaReceitas');
   }
 
+  function handleReceitasID(){
+    navigation.navigate('TelaResponsavelID');
+  }
+
   const [loaded] = useFonts({
     Roboto: require('../assets/fonts/Roboto-Thin.ttf'),
   });
@@ -29,11 +33,13 @@ export default function TelaResponsavel() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTextAdd}>Adicionar</Text>
+        <TouchableOpacity activeOpacity={0.8} onPress={handleReceitasID}>
+          <Text style={styles.headerTextAdd}>Adicionar</Text>
+        </TouchableOpacity>
         <Text style={styles.headerTextResp}>RESPONSÁVEL</Text>
       </View>
       <View style={styles.espacos}></View>
-      <Image style={styles.logo} source={ require('../assets/Responsavel.png') }/>
+      <Image style={styles.logo} source={require('../assets/Responsavel.png') }/>
       <Text style={styles.textPrincipal}>RESPONSÁVEL PELO PROGRESSO</Text>
       <Text style={styles.textSecundario}>Acompanhe em tempo real o progresso{"\n"}diário do dependente.</Text>
       <View style={styles.espacos}></View>
