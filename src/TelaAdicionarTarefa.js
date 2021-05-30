@@ -33,15 +33,12 @@ export default function TelaAdicionarTarefa() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={handlePressAdd}>
-          <Text style={styles.headerTextAdd}>Adicionar</Text>
-        </TouchableOpacity>
         <Text style={styles.headerTextHj}>HOJE</Text>
       </View>
       <View style={styles.espacos}></View>
       <Image style={styles.logo} source={ require('../assets/observacao.png') }/>
-      <Text style={styles.textPrincipal}>ADICIONAR TAREFA</Text>
-      <Text style={styles.textSecundario}>Adicione seu primeiro{"\n"}lembrete de medicamentos</Text>
+      <Text style={styles.textPrincipal}>VISUALIZE SUAS TAREFAS</Text>
+      <Text style={styles.textSecundario}>Adicione seu primeiro{"\n"}lembrete de medicamentos e{"\n"} visualize os que foram registrados</Text>
       <View style={styles.espacos}></View>
       <View style={styles.footer}>
         <Image style={styles.icon1} source={require('../assets/img1.png')}></Image>
@@ -83,7 +80,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto',
     fontSize: 20,
     color: '#ffffff',
-    paddingTop:10,
+    paddingTop:30,
     paddingRight:260,
     fontWeight: 'bold',
   },
