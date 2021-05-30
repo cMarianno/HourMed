@@ -1,7 +1,4 @@
 import React from 'react';
-import DropDownPicker from 'react-native-dropdown-picker';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native';
 import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native'
@@ -32,6 +29,17 @@ export default function TelaRegistrarMedicamento() {
         who: 'usuario'
     }
 
+    state = {
+        data: ''
+    }
+    
+    changeDate = (valor) => {
+        this.setState({
+            data: valor
+        })
+    }
+
+
     return (
         <View style={styles.container}>
         <View style={styles.espaco}></View>
@@ -49,6 +57,13 @@ export default function TelaRegistrarMedicamento() {
             <TextInput
                 style={styles.input}
                 placeholder = "Nome do dependente"
+            />
+
+            <DatePicker
+                format="DD/MM/YYYY"
+                style={styles.dateComponente}
+                date={this.state.data}
+                onDateChange={this.changeDate}
             />
 
             <TextInput
@@ -93,6 +108,9 @@ const styles = StyleSheet.create({
     espaco2:{
       marginTop:20,
       backgroundColor: '#000000'
+    },
+    dateComponente:{
+        width: 300
     },
     headerTxtVoltar:{
       fontWeight: "bold",
