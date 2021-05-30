@@ -6,161 +6,140 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native
 import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native'
 
-export default function TelaUsuarioComum() {
+export default function TelaRegistrarMedicamento() {
 
     const [loaded] = useFonts({
         Roboto: require('../assets/fonts/Roboto-Thin.ttf'),
     });
 
     const navigation = useNavigation();
-
+    
     if (!loaded) {
         return null;
     }
-
+    
     function handlePressConcluir(){
-        navigation.navigate('TelaRegistrarMedicamento');
+        navigation.navigate('TelaReceitas');
     }
 
-    TelaUsuarioComum.state = {
+    function handlePressVoltar(){
+        navigation.navigate('TelaReceitas');
+    }
+
+     TelaRegistrarMedicamento.state = {
         who: 'usuario'
     }
 
-  return (
-    <View style={styles.container}>
-        <View style={styles.header}>
-            <Text style={styles.headerTextAdd}>Voltar</Text>
-            <Text style={styles.headerTextResp}>Registrar Medicamento</Text>
-      </View>
+    return (
+        <View style={styles.container}>
+        <View style={styles.espaco}></View>
+        <TouchableOpacity style={styles.button2} activeOpacity={0.8} onPress={handlePressVoltar}>
+          <Text style={styles.headerTxtVoltar}>Voltar</Text>
+        </TouchableOpacity>
+        <Text style={styles.headerTxt}>Registrar Medicamento</Text>
+           
+            <TextInput
+                style={styles.input}
+                secureTextEntry={true}
+                placeholder = "Nome do medicamento"
+            />
 
-       <View style={styles.espacos2}></View>
+            <TextInput
+                style={styles.input}
+                secureTextEntry={true}
+                placeholder = "Nome do dependente"
+            />
 
-       <Text style={styles.txtNomeMed}>Nome do medicamento</Text>
-       <TextInput style={styles.txtInput}/>
-       <View style={styles.espacos2}></View>
+            <TextInput
+                style={styles.input}
+                secureTextEntry={true}
+                placeholder = "Início do tratamento"
+            />
 
-       <Text style={styles.txtNomeDep}>Nome do dependente</Text>
-       <TextInput style={styles.txtInput}/>
-       <View style={styles.espacos2}></View>
-        
-       <Text style={styles.txtSubtitulo}>Data início do tratamento</Text>
-       <TextInput style={styles.txtInput}/>
-       <View style={styles.espacos2}></View>
+             <TextInput
+                style={styles.input}
+                secureTextEntry={true}
+                placeholder = "Fim do tratamento"
+             />
 
-       <Text style={styles.txtSubtitulo}>Data final do tratamento</Text>
-       <TextInput style={styles.txtInput}/>
-       <View style={styles.espacos2}></View>
+             <TextInput
+                style={styles.input}
+                secureTextEntry={true}
+                placeholder = "Intervalo medicamento"
+             />
 
-      <Text style={styles.txtSubtitulo}>Intervalo do medicamento</Text>
-       <TextInput style={styles.txtInput}/>
-       <View style={styles.espacos2}></View>
+        <View style={styles.espaco2}></View>
 
-       <TouchableOpacity style={styles.BtnConcluir} activeOpacity={0.8} onPress={handlePressConcluir}>
-           <Text style={styles.BtnTxt}>Concluir</Text>
-       </TouchableOpacity>
-      <StatusBar style="auto" />
-    </View>
-  );
+            <TouchableOpacity style={styles.button2} activeOpacity={0.8} onPress={handlePressConcluir}>
+              <Text style={styles.textEntrar}>Registrar</Text>
+            </TouchableOpacity>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    backgroundColor: '#EDFBFD',
-  },
-  header: {
-    flex: 0.15,
-    alignItems: 'center',
-    backgroundColor: '#EDFBFD',
-    paddingTop:50,
-    width: "100%", 
-  },
-  headerTextAdd: {
-    fontFamily: 'Roboto',
-    fontSize: 18,
-    paddingTop: 2,
-    paddingRight:300,  
-    color: '#00498c',
-    fontWeight: 'bold',
-  },
-  txtSubtitulo:{
-    fontFamily: 'Roboto',
-    fontSize: 17,
-    paddingTop: 2,
-    paddingRight:70,  
-    color: '#00498c',
-    fontWeight: 'bold',
-    flex: 0.06
-  },
-  txtNomeMed:{
-    fontFamily: 'Roboto',
-    fontSize: 17,
-    paddingTop: 2,
-    paddingRight:80,  
-    color: '#00498c',
-    fontWeight: 'bold',
-    flex: 0.06
-  },
-  txtNomeDep:{
-    fontFamily: 'Roboto',
-    fontSize: 17,
-    paddingTop: 2,
-    paddingRight:100,  
-    color: '#00498c',
-    fontWeight: 'bold',
-    flex: 0.06
-  },
-  txtInput:{
-    fontFamily: 'Roboto',
-    fontSize: 1,
-    paddingRight:310,  
-    color: '#00498c',
-    fontWeight: 'bold',
-    flex: 0.05,
-    backgroundColor: "#055468",
-    borderRadius: 20,
-    backgroundColor: '#D5E8FE'
-  },
-  TxtConfirmarSenha:{
-    fontFamily: 'Roboto',
-    fontSize: 17,
-    paddingTop: 2,
-    paddingRight:160,  
-    color: '#00498c',
-    fontWeight: 'bold',
-    flex: 0.06
-  },
-  BtnConcluir:{
-    backgroundColor: "#000000",
-    paddingRight:150,  
-    color: '#ffffff',
-    fontWeight: 'bold',
-    flex: 0.05,
-    borderRadius: 20,
-    textAlign: 'center',
-    color: "#ffffff",
-    fontWeight: "bold",
-    fontSize: 15,
-    fontFamily: 'Roboto'
-  },
-  BtnTxt: {
-    color: "#ffffff",
-    fontWeight: "bold",
-    fontSize: 15,
-    fontFamily: 'Roboto'
-  },
-  headerTextResp: {
-    fontFamily: 'Roboto',
-    fontSize: 20,
-    color: '#00498c',
-    paddingTop:10,
-    fontWeight: 'bold',
-  },
-  espacos2:{
-    flex:0.03,
-    width: "100%"
-  }
-
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        backgroundColor: '#EDFBFD',
+    },
+    espaco:{
+      marginTop:80,
+      backgroundColor: '#000000'
+    },
+    espaco2:{
+      marginTop:20,
+      backgroundColor: '#000000'
+    },
+    headerTxtVoltar:{
+      fontWeight: "bold",
+      fontSize: 20,
+      paddingRight: 270,
+      paddingBottom: 20
+    },
+    headerTxt:{
+      fontWeight: "bold",
+      fontSize: 20
+    },
+    input:{
+        marginTop:30,
+        padding:10,
+        width:300,
+        backgroundColor: '#ffffff',
+        fontSize: 16,
+        fontWeight: 'bold',
+        borderRadius: 3
+    },
+    buttons: {
+        borderRadius: 8,
+        marginTop: 30,
+        backgroundColor: "#12003C",
+    },
+    text: {
+        width: 350,
+        height: 150,
+        fontFamily: 'Roboto',
+        fontSize: 14,
+        textAlign: 'center',
+        lineHeight: 17,
+        color: '#00498c',
+        marginTop: 250
+    },
+    textMarcado: {
+        color: "#00ace7",
+    },
+    textEntrar: {
+        paddingTop: 8,
+        width:300,
+        height:42,
+        backgroundColor: "#12003C",
+        color: '#fff',
+        marginTop: 20,
+        borderRadius: 3,
+        fontSize: 16,
+        alignItems: 'center',
+        justifyContent:'center',
+        textAlign: 'center', 
+    },
 });
