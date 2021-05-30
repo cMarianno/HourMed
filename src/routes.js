@@ -15,6 +15,7 @@ import TelaConfirmado from '../src/TelaConfirmado';
 import TelaAdicionarTarefa from '../src/TelaAdicionarTarefa';
 import TelaReceitas from '../src/TelaReceitas';
 import TelaResponsavel from '../src/TelaResponsavel';
+import TelaResponsavelID from './TelaResponsavelID';
 
 export default function Routes(){
     return(
@@ -31,6 +32,7 @@ export default function Routes(){
                 <Screen name="TelaAdicionarTarefa" component={TelaAdicionarTarefa}/>
                 <Screen name="TelaReceitas" component={TelaReceitas}/>
                 <Screen name="TelaResponsavel" component={TelaResponsavel}/>
+                <Screen name="TelaResponsavelID" component={TelaResponsavelID}/>
             </Navigator>
         </NavigationContainer>
     );
