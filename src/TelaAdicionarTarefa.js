@@ -18,6 +18,10 @@ export default function TelaAdicionarTarefa() {
     navigation.navigate('TelaReceitas');
   }
 
+  function handlePressAdd(){
+    navigation.navigate('TelaRegistrarMedicamento');
+  }
+
   const [loaded] = useFonts({
     Roboto: require('../assets/fonts/Roboto-Thin.ttf'),
   });
@@ -29,7 +33,9 @@ export default function TelaAdicionarTarefa() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTextAdd}>Adicionar</Text>
+        <TouchableOpacity onPress={handlePressAdd}>
+          <Text style={styles.headerTextAdd}>Adicionar</Text>
+        </TouchableOpacity>
         <Text style={styles.headerTextHj}>HOJE</Text>
       </View>
       <View style={styles.espacos}></View>
