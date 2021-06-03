@@ -1,12 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert} from 'react-native';
 import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native'
+import api from "./services/api";
 
 export default function TelaUsuarioComum() {
+    let [email, setEmail] = useState("");
+    let [password, setPassword] = useState("");
+    let [confirmPass, setConfirmPass] = useState("");
+    let [username, setUsername] = useState("");
+    let errors = "";
+
+    const makeSign = async () => {
+        if (email.length === 0 || password.length === 0 || confirmPass.length === 0 || username.length === 0)
+            errors = "Preencha os campos para fazer a criação da sua senha!";
+        
+        if (password != confirmPass)
+            errors = "Campo Senha e Confirmar Senha devem conter a mesma informação!"
+
+        if(errors == ""){
+            try {
+                await api.post("/user/signup", {
+                    email,
+                    password,
+                    username
+                });
+    
+                navigation.navigate('TelaMedicacao');
+            } catch (_err) {
+                console.log(_err);
+                Alert.alert(
+                    "Houve um problema com a criação da sua senha, verifique suas credenciais!"
+                );
+            }
+        }else  
+            Alert.alert(errors);
+    };
 
     const [loaded] = useFonts({
         Roboto: require('../assets/fonts/Roboto-Thin.ttf'),
@@ -16,10 +48,6 @@ export default function TelaUsuarioComum() {
     
     if (!loaded) {
         return null;
-    }
-    
-    function handlePressConcluir(){
-        navigation.navigate('TelaMedicacao');
     }
 
     function handlePressVoltar(){
@@ -58,31 +86,46 @@ export default function TelaUsuarioComum() {
 
             <TextInput
                 style={styles.input}
-                secureTextEntry={true}
                 placeholder = "Nome"
+                value={username}
+                onChangeText={setUsername}
             />
 
             <TextInput
                 style={styles.input}
-                secureTextEntry={true}
                 placeholder = "E-mail"
+                value={email}
+                autoCompleteType="email"
+                autoCapitalize="none"
+                keyboardType="email-address"
+                onChangeText={setEmail}
             />
 
             <TextInput
                 style={styles.input}
-                secureTextEntry={true}
                 placeholder = "Senha"
+                value={password}
+                autoCompleteType="password"
+                textContentType="password"
+                autoCapitalize="none"
+                secureTextEntry={true}
+                onChangeText={setPassword}
             />
 
-             <TextInput
+            <TextInput
                 style={styles.input}
-                secureTextEntry={true}
                 placeholder = "Confirmar senha"
-             />
+                value={confirmPass}
+                autoCompleteType="password"
+                textContentType="password"
+                autoCapitalize="none"
+                secureTextEntry={true}
+                onChangeText={setConfirmPass}
+            />
 
         <View style={styles.espaco2}></View>
 
-            <TouchableOpacity style={styles.button2} activeOpacity={0.8} onPress={handlePressConcluir}>
+            <TouchableOpacity style={styles.button2} activeOpacity={0.8} onPress={makeSign}>
               <Text style={styles.textEntrar}>Concluir</Text>
             </TouchableOpacity>
         </View>
