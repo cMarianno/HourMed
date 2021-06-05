@@ -1,23 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image} from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Alert} from 'react-native';
 import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native'
-
+import api from "./services/api";
 
 export default function TelaLogin() {
+    let [email, setEmail] = useState("");
+    let [password, setPassword] = useState("");
+
+    const makeLogin = async () => {
+        if (email.length === 0 || password.length === 0) {
+            Alert.alert("Preencha os campos para fazer login!");
+        } else {
+            try {
+                await api.post("/user/login", {
+                    email,
+                    password,
+                });
+
+                navigation.navigate('TelaMedicacao');
+            } catch (_err) {
+                console.log(_err);
+                Alert.alert(
+                    "Houve um problema com o login, verifique suas credenciais!"
+                );
+            }
+        }
+    };
 
     const navigation = useNavigation();
 
     const [loaded] = useFonts({
         Roboto: require('../assets/fonts/Roboto-Thin.ttf'),
     });
-
-    function handlePressEntrar(){
-        navigation.navigate('TelaMedicacao');
-    }
     
     function handlePressCriarConta(){
         navigation.navigate('TelaUsuarioComum');
@@ -38,17 +56,27 @@ export default function TelaLogin() {
             <TextInput
                 style={styles.input}
                 placeholder = "E-mail"
+                value={email}
+                autoCompleteType="email"
+                autoCapitalize="none"
+                keyboardType="email-address"
+                onChangeText={setEmail}
             />
 
             <TextInput
                 style={styles.input}
-                secureTextEntry={true}
                 placeholder = "Senha"
+                value={password}
+                autoCompleteType="password"
+                textContentType="password"
+                autoCapitalize="none"
+                secureTextEntry={true}
+                onChangeText={setPassword}
             />
 
         <View style={styles.espaco2}></View>
 
-            <TouchableOpacity onPress={handlePressEntrar}>
+            <TouchableOpacity onPress={makeLogin}>
               <Text style={styles.textEntrar}>Entrar</Text>
             </TouchableOpacity>
 
