@@ -26,10 +26,6 @@ export default function TelaUsuarioComum() {
         navigation.navigate('TelaLogin');
     }
 
-     TelaUsuarioComum.state = {
-        who: 'usuario'
-    }
-
     return (
         <View style={styles.container}>
         <View style={styles.espaco}></View>
@@ -38,23 +34,18 @@ export default function TelaUsuarioComum() {
         </TouchableOpacity>
         <Text style={styles.headerTxt}>Crie sua conta</Text>
 
-        <DropDownPicker
+            <DropDownPicker
                 items={[
-                    {label: 'Usuário', value: 'usuario', icon: () => <Icon name="flag" size={18} color="#D5E8FE" />, hidden: true},
-                    {label: 'Responsável', value: 'responsavel', icon: () => <Icon name="flag" size={18} color="#D5E8FE" />}
+                    {label: 'Responsável', value: 'responsavel'},
+                    {label: 'Usuário', value: 'usuario', selected: true},
+                    
                 ]}
-                defaultValue={TelaUsuarioComum.state.who}
+                defaultIndex={1}
+                defaultValue="usuario"
                 containerStyle={{height: 40, marginTop: '5%', width: '80%'}}
-                style={{ backgroundColor: '#D5E8FE'}}
-                itemStyle={{
-                    justifyContent: 'flex-start'
-                }}
-                dropDownStyle={{backgroundColor: '#D5E8FE'}}
-                onChangeItem={item => TelaUsuarioComum.setState({
-                    who: item.value
-            })}>
-        
-        </DropDownPicker>
+                onChangeItem={item => console.log(item.label, item.value)}
+
+            />
 
             <TextInput
                 style={styles.input}
