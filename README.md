@@ -1,9 +1,12 @@
 # 1. Apresentação
 
-Hourmed é um aplicativo responsável por organizar, agendar e notificar e ajudar os cuidadores a acompanhar a rotina de medicamentos.
+Hourmed é um aplicativo responsável por organizar, agendar,notificar e ajudar os cuidadores a acompanhar a rotina de medicamentos.
 Os responsáveis podem obter informações.
 
 O objetivo principal desse projeto é auxiliar na gestão dos medicamentos e controle de vencimaneto de receitas médicas. 
+
+![image 2 (1)](https://user-images.githubusercontent.com/61214124/120929062-de8f8b80-c6bd-11eb-9848-72b8f9ed11c0.png)
+
 
 Nossa equipe é composto por 5 pessoas, cada um possui skills específicas, mas todos trabalharam para ajudar em cada fase do projeto.
 
