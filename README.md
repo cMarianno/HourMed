@@ -1,30 +1,19 @@
-# 1. Apresentação
-
-Hourmed é um aplicativo responsável por organizar, agendar,notificar e ajudar os cuidadores a acompanhar a rotina de medicamentos.
-Os responsáveis podem obter informações.
-
-O objetivo principal desse projeto é auxiliar na gestão dos medicamentos e controle de vencimaneto de receitas médicas. 
+HourMed é um sistema de controle de medicamentos, o principal objetivo é "abandonar" o antigo controle de remédios diários de potes para alertas exclusivos e gerência de medicamentos.
 
 ![image 2 (1)](https://user-images.githubusercontent.com/61214124/120929062-de8f8b80-c6bd-11eb-9848-72b8f9ed11c0.png)
 
 
-Nossa equipe é composto por 5 pessoas, cada um possui skills específicas, mas todos trabalharam para ajudar em cada fase do projeto.
-
-# 2. Equipe
-
+Nossa equipe é composta por 5 pessoas, cada um possui skills específicas, mas todos trabalharam para ajudar em cada fase do projeto.
 • Caio Mariano | Dev | https://github.com/cMarianno - (Perfil raiz)
 • Danielle Moreira | PO | https://github.com/daniellymoreiira
 • Isis Cristina | https://github.com/isiscfernandes
 • Laura Xavier | https://github.com/lauraxavierr
 • Thiago Davi | Dev | https://github.com/ThiagoDavi-AnDev
 
-# 3. Atores
+REQUISITOS FUNCIONAIS
 
-• Usuário
-• Opcional: Responsável pelo usuário (caso seja idoso).
-• Opcional: Idoso
+[Projeto Integrador (1).pdf](https://github.com/cMarianno/HourMed/files/6604392/Projeto.Integrador.1.pdf)
 
-#### 4. Requisitos Funcionais
 
 #### 4.1. Registrar usuário (CRUD completo);
 
