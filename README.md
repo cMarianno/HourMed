@@ -11,6 +11,9 @@ Nossa equipe é composta por 5 pessoas, cada um possui skills específicas, mas 
 • Thiago Davi | Dev | https://github.com/ThiagoDavi-AnDev
 
 REQUISITOS FUNCIONAIS
+teste	teste
+teste	teste
+![image](https://user-images.githubusercontent.com/61214124/120940429-9c813c80-c6f3-11eb-9819-b626e9aabb1e.png)
 
 ![image](https://user-images.githubusercontent.com/61214124/120930136-77280a80-c6c2-11eb-878a-6ae6aa38f416.png)
 ![image](https://user-images.githubusercontent.com/61214124/120930156-8ad37100-c6c2-11eb-8ca2-5cd219ac3ff3.png)
