@@ -1,11 +1,11 @@
 import React from 'react';
-import DropDownPicker from 'react-native-dropdown-picker';
+// import DropDownPicker from 'react-native-dropdown-picker';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native';
 import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native'
-import DatePicker from 'react-native-datepicker';
+// import DatePicker from 'react-native-datepicker';
 
 
 export default function TelaRegistrarMedicamento() {

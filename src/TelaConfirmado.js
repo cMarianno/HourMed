@@ -3,13 +3,15 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, TouchableOpacity, Text, View, Image } from 'react-native';
 import { useFonts } from 'expo-font';
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 
 export default function TelaAviso() {
+    const route = useRoute();
+    const params = route.params;
 
     const navigation = useNavigation();
 
-    // setTimeout(() => {navigation.navigate('TelaLogin');}, 5000)
+    setTimeout(() => {navigation.navigate('TelaAdicionarTarefa', params);}, 5000)
 
     const [loaded] = useFonts({
         Roboto: require('../assets/fonts/Roboto-Thin.ttf'),

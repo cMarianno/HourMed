@@ -1,21 +1,24 @@
-import React from 'react';
+import React, { useState, Component } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, Div, View, Image,ImageBackground, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, Div, View, Image,ImageBackground, TouchableOpacity, FlatList, SafeAreaView, SectionList } from 'react-native';
 import { useFonts } from 'expo-font';
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import { color } from 'react-native-reanimated';
 import { Header } from 'react-native/Libraries/NewAppScreen';
-
+// import { ListItem, Icon } from 'react-native-elements'
 export default function TelaAdicionarTarefa() {
+  const [selectedId, setSelectedId] = useState('');
 
+  const route = useRoute();
+  const params = route.params;
   const navigation = useNavigation();
 
   function handlePressResponsavel(){
-    navigation.navigate('TelaResponsavel');
+    navigation.navigate('TelaResponsavel', params);
   }
 
   function handlePressReceitas(){
-    navigation.navigate('TelaReceitas');
+    navigation.navigate('TelaReceitas', params);
   }
 
   function handlePressAdd(){
@@ -30,16 +33,76 @@ export default function TelaAdicionarTarefa() {
     return null;
   }
 
+  const DATA = [
+    {
+      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba1',
+      title: 'Primeiro Remédio',
+    },
+    {
+      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f632',
+      title: 'Segundo Remédio',
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d723',
+      title: 'Terceiro Remédio',
+    },
+    {
+      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f634',
+      title: 'Quarto Remédio',
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d725',
+      title: 'Quinto Remédio',
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d726',
+      title: 'Sexto Remédio',
+    },
+    {
+      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f637',
+      title: 'Sétimo Remédio',
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d728',
+      title: 'Oitavo Remédio',
+    },
+  ];
+
+  const Item = ({ item, onPress, backgroundColor, textColor }) => (
+    <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
+      <Text style={[styles.title, textColor]}>{item.title}</Text>
+    </TouchableOpacity>
+  );
+
+
+  const renderItem = ({ item }) => {
+    const backgroundColor = item.id === selectedId ? "#47797C" : "#b8d9dc";
+    const color = item.id === selectedId ? 'white' : 'black';
+
+    return (
+      <Item
+        item={item}
+        onPress={() => setSelectedId(item.id)}
+        backgroundColor={{ backgroundColor }}
+        textColor={{ color }}
+      />
+    );
+  };
+
   return (
+    
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTextHj}>HOJE</Text>
       </View>
-      <View style={styles.espacos}></View>
-      <Image style={styles.logo} source={ require('../assets/observacao.png') }/>
-      <Text style={styles.textPrincipal}>VISUALIZE SUAS TAREFAS</Text>
-      <Text style={styles.textSecundario}>Adicione seu primeiro{"\n"}lembrete de medicamentos e{"\n"} visualize os que foram registrados</Text>
-      <View style={styles.espacos}></View>
+          <SafeAreaView style={styles.container}>
+            <FlatList
+              data={DATA}
+              renderItem={renderItem}
+              keyExtractor={(item) => item.id}
+              extraData={selectedId}
+            />
+          </SafeAreaView>
       <View style={styles.footer}>
         <Image style={styles.icon1} source={require('../assets/img1.png')}></Image>
         <TouchableOpacity style={styles.icon2} activeOpacity={0.8} onPress={handlePressResponsavel}>
@@ -57,12 +120,11 @@ export default function TelaAdicionarTarefa() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
     backgroundColor: '#EDFBFD',
+    marginTop: StatusBar.currentHeight || 0,
   },
   header: {
-    flex: 0.25,
+    flex: 0.15,
     alignItems: 'center',
     backgroundColor: '#47797C',
     paddingTop:50,
@@ -83,11 +145,6 @@ const styles = StyleSheet.create({
     paddingTop:30,
     paddingRight:260,
     fontWeight: 'bold',
-  },
-  logo: {
-    width: "50%",
-    height: "25%",
-    resizeMode: 'contain'
   },
   textPrincipal: {
     fontFamily: 'Roboto',
@@ -111,7 +168,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     width:"100%",
-    flex:0.20,
+    flex:0.14,
     backgroundColor:"#b8d9dc",
     flexDirection: 'row'
   },
@@ -127,5 +184,22 @@ const styles = StyleSheet.create({
     width:"33%",
     resizeMode: 'contain'
   },
-
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 32,
+  },
+  scroll:{
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+  },
+  centerImage: {
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    resizeMode: 'contain'
+  }
 });

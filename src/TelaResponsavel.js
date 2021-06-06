@@ -2,12 +2,14 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, Div, View, Image,ImageBackground, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import { color } from 'react-native-reanimated';
 import { Header } from 'react-native/Libraries/NewAppScreen';
 
 export default function TelaResponsavel() {
 
+  const route = useRoute();
+  const params = route.params;
   const navigation = useNavigation();
 
   function handleAdicionarTarefas(){
@@ -19,8 +21,12 @@ export default function TelaResponsavel() {
   }
 
   function handleReceitasID(){
-    navigation.navigate('TelaResponsavelID');
+    navigation.navigate('TelaResponsavelID', params);
   }
+
+//   function handleNavigateToOrphanageDetails(id: number){
+//     navigation.navigate('OrphanagesDetails', { id });
+// }
 
   const [loaded] = useFonts({
     Roboto: require('../assets/fonts/Roboto-Thin.ttf'),

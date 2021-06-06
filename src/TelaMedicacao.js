@@ -1,16 +1,17 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, TouchableOpacity, ImageBackground, Text, View} from 'react-native';
+import { StyleSheet, TouchableOpacity, ImageBackground, Text, View, Alert} from 'react-native';
 import { useFonts } from 'expo-font';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 
 export default function TelaMedicacao() {
-
+    const route = useRoute();
+    const params = route.params;
     const navigation = useNavigation();
 
     function handlePress(){
-        navigation.navigate('TelaAdicionarTarefa');
+        navigation.navigate('TelaAdicionarTarefa', params);
     }
 
     const [loaded] = useFonts({

@@ -16,12 +16,13 @@ export default function TelaLogin() {
             Alert.alert("Preencha os campos para fazer login!");
         } else {
             try {
-                await api.post("/user/login", {
+                const response = await api.post("/user/login", {
                     email,
                     password,
                 });
 
-                navigation.navigate('TelaMedicacao');
+                navigation.navigate('TelaMedicacao', {email, type: response.data.body.type});
+                // navigation.navigate('TelaMedicacao', {email, type: response.message});
             } catch (_err) {
                 console.log(_err);
                 Alert.alert(

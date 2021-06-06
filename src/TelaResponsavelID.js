@@ -1,12 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert} from 'react-native';
 import { useFonts } from 'expo-font';
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native';
+import api from "./services/api";
+
 
 export default function TelaRegistrarMedicamento() {
+    const route = useRoute();
+    let [userID, setUserID] = useState("");
+    const params = route.params;
+
+    const saveLowId = async () => {
+        if (userID.length === 0) {
+            Alert.alert("Preencha os campos para fazer o registro!");
+        } else {
+            try {
+                await api.post("/user/putLowId", {
+                    email: params.email,
+                    lowID: userID,
+                });
+
+                navigation.navigate('TelaConfirmado', params);
+            } catch (_err) {
+                console.log(_err);
+                Alert.alert(
+                    "Houve um problema com a linkagem com o(a) idoso(a), verifique suas credenciais!"
+                );
+            }
+        }
+    };
 
     const [loaded] = useFonts({
         Roboto: require('../assets/fonts/Roboto-Thin.ttf'),
@@ -18,16 +43,9 @@ export default function TelaRegistrarMedicamento() {
         return null;
     }
     
-    function handlePressConcluir(){
-        navigation.navigate('TelaConfirmado');
-    }
 
     function handlePressVoltar(){
         navigation.navigate('TelaResponsavel');
-    }
-
-     TelaRegistrarMedicamento.state = {
-        who: 'usuario'
     }
 
     return (
@@ -41,11 +59,13 @@ export default function TelaRegistrarMedicamento() {
             <TextInput
                 style={styles.input}
                 placeholder = "ID"
+                value={userID}
+                onChangeText={setUserID}
             />
             
         <View style={styles.espaco2}></View>
 
-            <TouchableOpacity style={styles.button2} activeOpacity={0.8} onPress={handlePressConcluir}>
+            <TouchableOpacity style={styles.button2} activeOpacity={0.8} onPress={saveLowId}>
               <Text style={styles.textEntrar}>Registrar</Text>
             </TouchableOpacity>
         </View>
