@@ -11,16 +11,9 @@ Nossa equipe é composta por 5 pessoas, cada um possui skills específicas, mas 
 • Thiago Davi | Dev | https://github.com/ThiagoDavi-AnDev
 
 REQUISITOS FUNCIONAIS
-Requisito	Descrição
-[RF01] Registrar usuário	(CRUD completo)
-[RF02] Registrar responsável	(CRUD completo)
-[RF03] Inclusão de medicamento	O sistema deve contém uma tela onde o usuário principal ou responsável preencha os campos remédio, horário a utilizar, quantidade de cápsulas para tomar
-[RF04]Inclusão de tarefa	Usuário informa se realizou ou não a tarefa registrada
-[RF05] Remoção de medicamento	Deleta o medicamento selecionado pelo usuário
+
 ![image](https://user-images.githubusercontent.com/61214124/120940648-b5d6b880-c6f4-11eb-8624-76d7484dfdd9.png)
-
 ![image](https://user-images.githubusercontent.com/61214124/120940429-9c813c80-c6f3-11eb-9819-b626e9aabb1e.png)
-
 ![image](https://user-images.githubusercontent.com/61214124/120930136-77280a80-c6c2-11eb-878a-6ae6aa38f416.png)
 ![image](https://user-images.githubusercontent.com/61214124/120930156-8ad37100-c6c2-11eb-8ca2-5cd219ac3ff3.png)
 ![image](https://user-images.githubusercontent.com/61214124/120930604-624c7680-c6c4-11eb-8b49-8f4e86f5fedb.png)
