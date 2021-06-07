@@ -54,8 +54,21 @@ Abaixo os diagramas de banco de dados. As principais entidades do sistema segund
 ![TCC_Logico_2](https://user-images.githubusercontent.com/61214124/120942320-92b10680-c6fe-11eb-8dd9-85e5642e159a.png)
 
 # RESULTADOS
+Abaixo uma sequência de imagens que mostram o sistema desenvolvido.
 
-# INSTALAÇÃO
+![WhatsApp Image 2021-06-06 at 7 48 11 PM](https://user-images.githubusercontent.com/61214124/120943299-7a43ea80-c704-11eb-9b35-098c41be031b.jpeg)
+![WhatsApp Image 2021-06-06 at 7 48 10 PM (4)](https://user-images.githubusercontent.com/61214124/120943436-3dc4be80-c705-11eb-8a85-8217ee076e19.jpeg) 
+![WhatsApp Image 2021-06-06 at 7 48 10 PM (3)](https://user-images.githubusercontent.com/61214124/120946925-820b8b00-c714-11eb-90c5-d5544f43f9e9.jpeg)
+![WhatsApp Image 2021-06-06 at 7 48 10 PM](https://user-images.githubusercontent.com/61214124/120946961-a5363a80-c714-11eb-95a1-6301b23064ab.jpeg)
+![WhatsApp Image 2021-06-06 at 7 48 10 PM (1)](https://user-images.githubusercontent.com/61214124/120947136-28579080-c715-11eb-9e5d-0a3502144312.jpeg)
+![WhatsApp Image 2021-06-06 at 7 48 09 PM (1)](https://user-images.githubusercontent.com/61214124/120947338-b16ec780-c715-11eb-9cfb-47b351b40f93.jpeg)
+![WhatsApp Image 2021-06-06 at 7 48 10 PM (2)](https://user-images.githubusercontent.com/61214124/120947353-baf82f80-c715-11eb-8409-0b13eba72438.jpeg)
+![WhatsApp Image 2021-06-06 at 7 48 11 PM (1)](https://user-images.githubusercontent.com/61214124/120947210-576e0200-c715-11eb-842a-92506747e9fd.jpeg)
+
+
+
 
 # REFERÊNCIAS
+https://www.figma.com/file/M8Yk53q9IGIpk8xQRloSKv/HOURMED?node-id=0%3A1
+https://github.com/cMarianno/HourMed
 
