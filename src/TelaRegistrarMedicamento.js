@@ -1,11 +1,11 @@
 import React from 'react';
-// import DropDownPicker from 'react-native-dropdown-picker';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native';
+import { TextInputMask } from 'react-native-masked-text';
+import { StyleSheet, TouchableOpacity, Text, View, TextInput} from 'react-native';
 import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native'
-// import DatePicker from 'react-native-datepicker';
+import { useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
 
 
 export default function TelaRegistrarMedicamento() {
@@ -16,6 +16,10 @@ export default function TelaRegistrarMedicamento() {
 
     const navigation = useNavigation();
     
+    const [dateInit, setDateInit] = useState(null);
+    const [dateEnd, setDateEnd] = useState(null); // necessário fazer validação para que a data não seja menor que hoje.
+    const [breakMed, setBreakMed] = useState(null); // vai ser treta pra validar e guardar no banco <- 
+
     if (!loaded) {
         return null;
     }
@@ -35,44 +39,76 @@ export default function TelaRegistrarMedicamento() {
     return (
         <View style={styles.container}>
         <View style={styles.espaco}></View>
-        <TouchableOpacity style={styles.button2} activeOpacity={0.8} onPress={handlePressVoltar}>
+        <TouchableOpacity activeOpacity={0.8} onPress={handlePressVoltar}>
           <Text style={styles.headerTxtVoltar}>Voltar</Text>
         </TouchableOpacity>
         <Text style={styles.headerTxt}>Registrar Medicamento</Text>
            
+           <Text style={styles.textTit}>Nome do medicamento</Text>
             <TextInput
                 style={styles.input}
-                type="date"
-                placeholder = "Nome do medicamento"
+                type="text"
+                placeholder = "Luana Ferreira"
             />
 
+            <Text style={styles.textTit}>Nome do dependente</Text>
             <TextInput
                 style={styles.input}
-                placeholder = "Nome do dependente"
+                placeholder = "Maria Luiza"
             />
 
-            <TextInput
+            <Text style={styles.textTit}>Data inicio tratamento:</Text>
+            <TextInputMask // campo mascarado (cobaia - com explicações) 
+                placeholder="Ex: 01/01/2001" // exemplo de como preencher o campo. ;)
                 style={styles.input}
-                type="date"
-                defaultValue="2021-05-24"
-                placeholder = "Início do tratamento"
+                type={'datetime'} // tipo da máscara.
+                options={{
+                    format: 'DD/MM/YYYY' // formato em que as informações serão exibidas após o preenchimento do campo.
+                }}
+                value={dateInit} // valor do campo.
+                onChangeText={value => {
+                    setDateInit(value)
+                }}
+                keyboardType="numeric" // tipo do teclado que será exibido para o usuário.
+                returnKeyType="done" // tipo de botão do teclado exibido para o usuário.
             />
 
-             <TextInput
+            <Text style={styles.textTit}>Data fim tratamento</Text>
+            <TextInputMask 
+                placeholder="Ex: 31/12/2021"
                 style={styles.input}
-                defaultValue="2021-07-24"
-                placeholder = "Fim do tratamento"
-             />
+                type={'datetime'}
+                options={{
+                    format: 'DD/MM/YYYY'
+                }}
+                value={dateEnd}
+                onChangeText={value => {
+                    setDateEnd(value)
+                }}
+                keyboardType="numeric"
+                returnKeyType="done"
+            />
+            <Text style={styles.textTit}>Intervalo Medicamento:</Text>
+             <TextInput 
+                placeholder="Ex: 08:00"
+                style={styles.input}
+                type={'datetime'}
+                options={{
+                    format: 'HH:mm'
+                }}
+                value={breakMed}
+                onChangeText={value => {
+                    setBreakMed(value)
+                }}
+                keyboardType="numeric"
+                returnKeyType="done"
 
-             <TextInput
-                style={styles.input}
-                defaultValue="11:00"
-                placeholder = "Intervalo medicamento"
-             />
+
+            />
 
         <View style={styles.espaco2}></View>
 
-            <TouchableOpacity style={styles.button2} activeOpacity={0.8} onPress={handlePressConcluir}>
+            <TouchableOpacity activeOpacity={0.8} onPress={handlePressConcluir}>
               <Text style={styles.textEntrar}>Registrar</Text>
             </TouchableOpacity>
         </View>
@@ -104,8 +140,14 @@ const styles = StyleSheet.create({
       fontWeight: "bold",
       fontSize: 20
     },
+    textTit:{
+        marginTop:15,
+        width: 300,
+        fontSize: 16,
+        fontWeight: 'bold'
+    },
     input:{
-        marginTop:30,
+        marginTop:10,
         padding:10,
         width:300,
         backgroundColor: '#ffffff',
