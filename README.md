@@ -1,135 +1,74 @@
-# 1. Apresentação
+# HOURMED
+HourMed é um sistema de controle de medicamentos, o principal objetivo é "abandonar" o antigo controle de remédios diários de potes para alertas exclusivos e gerência de medicamentos.
 
-Hourmed é um aplicativo responsável por organizar, agendar e notificar e ajudar os cuidadores a acompanhar a rotina de medicamentos.
-Os responsáveis podem obter informações.
+![image 2 (1)](https://user-images.githubusercontent.com/61214124/120929062-de8f8b80-c6bd-11eb-9848-72b8f9ed11c0.png)
 
-O objetivo principal desse projeto é auxiliar na gestão dos medicamentos e controle de vencimaneto de receitas médicas. 
+Nossa equipe é composta por 5 pessoas, cada um possui skills específicas, mas todos trabalharam para ajudar em cada fase do projeto.
+- Caio Mariano | Dev | https://github.com/cMarianno - (Perfil raiz)
+- Danielle Moreira | PO | https://github.com/daniellymoreiira 
+- Isis Cristina | https://github.com/isiscfernandes  
+- Laura Xavier | https://github.com/lauraxavierr
+- Thiago Davi | Dev | https://github.com/ThiagoDavi-AnDev
 
-Nossa equipe é composto por 5 pessoas, cada um possui skills específicas, mas todos trabalharam para ajudar em cada fase do projeto.
+## Requisitos Funcionais
+![image](https://user-images.githubusercontent.com/61214124/120940648-b5d6b880-c6f4-11eb-8624-76d7484dfdd9.png)
 
-# 2. Equipe
+# Use Case
 
-• Caio Mariano | Dev | https://github.com/cMarianno - (Perfil raiz)
-• Danielle Moreira | PO | https://github.com/daniellymoreiira
-• Isis Cristina | https://github.com/isiscfernandes
-• Laura Xavier | https://github.com/lauraxavierr
-• Thiago Davi | Dev | https://github.com/ThiagoDavi-AnDev
+![image](https://user-images.githubusercontent.com/61214124/120930136-77280a80-c6c2-11eb-878a-6ae6aa38f416.png)
+![image](https://user-images.githubusercontent.com/61214124/120930156-8ad37100-c6c2-11eb-8ca2-5cd219ac3ff3.png)
+![image](https://user-images.githubusercontent.com/61214124/120930604-624c7680-c6c4-11eb-8b49-8f4e86f5fedb.png)
+![image](https://user-images.githubusercontent.com/61214124/120930621-77290a00-c6c4-11eb-88a0-e6926718d296.png)
 
-# 3. Atores
+## Requisitos Não Funcionais
 
-• Usuário
-• Opcional: Responsável pelo usuário (caso seja idoso).
-• Opcional: Idoso
+- [RNF01] Para o registro de um novo usuário é necessário obrigatoriamente preencher todos os campos
+- [RNF02] Um mesmo e-mail não poderá ser utilizado para registro por usuários diferentes
+- [RNF03] O número de identificação do usuário deverá ser único, ou seja, cada usuário possui seu próprio código sendo eles diferentes para cada um
+- [RNF04] O sistema terá uma interface simples de forma que o usuário entenda com facilidade o que deve ser feito
+- [RNF05] As tarefas identificadas no calendário terão as cores semelhantes do remédio que deve ser tomado
 
-#### 4. Requisitos Funcionais
+# Projeto e Tecnologia Envolvida 
+## Frontend/web
+- Javascript
+- React Native
+- CSS
 
-#### 4.1. Registrar usuário (CRUD completo);
+## Backend
+- Nodejs
+- Expo
+ 
+## Repositório de Dados
+- MongoDB
 
-#### 4.2. Alertar usuário
-O sistema deve alertar se o registro do usuário foi completado com
-sucesso ou se houve alguma divergência nos dados inseridos. Caso
-tenha sido completado, o sistema irá gerar um número de identificação do
-usuário.
-
-#### 4.3. Registrar responsável (CRUD completo);
-Opção de realizar o cadastro do idoso, inserir seus medicamentos e
-horários relacionados com ele.
-
-#### 4.4. Alertar responsável
-O sistema deve alertar se o registro do responsável foi completado com
-sucesso ou se houve alguma divergência nos dados inseridos. Caso
-tenha sido completado, o sistema irá direcioná-lo para a página de
-visualização do planejamento, já se houver alguma divergência retornará
-para a página de registro, demonstrando em vermelho o campo que não
-foi preenchido corretamente.
-
-#### 4.5. Inclusão de medicamento;
-O sistema deve conter uma tela onde o usuário principal ou responsável
-preencha os campos remédio, horário a utilizar, quantidade de cápsulas
-para tomar.
-
-#### 4.6. Inclusão vencimento da receita;
-Data prevista para estoque de remédio e gestão de medicamento para
-efetuar a compra ANTES de acabar o estoque.
-
-#### 4.7. Inclusão de tarefa;
-Realizou ou não a tarefa registrada;
-
-#### 4.8. Remoção de medicamento;
-
-#### 4.9. Indicação de calendário do sistema;
-Acompanhamento diário de atividades a realizar.
-
-#### 4.10. Consulta de histórico do sistema;
-Controle de remédios tomados no horário ou não.
-
-#### 4.11. Notificação para o idoso perguntando de forma amigável se o
-remédio foi tomado ou não.
-
-#### 4.12 Notificação para responsável alertando se o remédio foi tomado ou
-não. Caso não tenha sido, lembrete para o idoso.
-
-#### 4.13. Notificação para o usuário alertando se a receita está prestes a
-vencer.
-
-# 5. Requisitos Não Funcionais
-
-#### 5.1. Para o registro de um novo usuário é necessário obrigatoriamente
-preencher os campos e-mail, senha, Idade, sexo, peso, altura e ano de
-nascimento.
-
-#### 5.2. Para o registro de um novo responsável é necessário
-obrigatoriamente preencher os campos e-mail, senha e código do usuário que
-deseja acompanhar.
-
-#### 5.3. Um mesmo e-mail não poderá ser utilizado para registro por usuários
-diferentes.
-
-#### 5.4. O número de identificação do usuário deverá ser único, ou seja, cada
-usuário possui seu próprio código sendo eles diferentes para cada um.
-
-#### 5.5. O lembrete de medicação deve alertar 5 minutos antes lembrando
-que está quase no horário de tomar a medicação. O próximo lembrete deve ser
-no horário programado para alerta.
-
-#### 5.6. Para o sistema Responsável-idoso, a informação de que o
-medicamento foi tomado ou não, deve ser informada imediatamente para o
-responsável após a opção selecionado pelo idoso.
-
-#### 5.7. A página de Consulta de histórico deve conter um gráfico indicando
-se os horários cadastrados condizem com os horários de inserção do
-medicamento.
-
-#### 5.8. O lembrete sobre vencimento da receita deve ser 7 dias antes do
-vencimento, alertando a cada 2 dois dias.
-
-#### 5.9. O sistema terá uma interface simples de forma que o usuário entenda
-com facilidade o que deve ser feito.
-
-#### 5.10. As tarefas identificadas no calendário terão as cores semelhantes
-do remédio que deve ser tomado.
-
-# 6. PROJETO E TECNOLOGIA ENVOLVIDA
-
-#### Frontend/web
-  • Javascript
-  • React Native
-  • CSS
-
-#### Backend
-  • Nodejs
-
-  
-#### Repositório de dados
-  • MongoDB
-  
-#### Testes
-
-
+## Testes, PoC's e entidades
 O projeto foi desenvolvido no Expo Go, ferramenta utilizada no desenvolvimento mobile com React Native que permite o fácil acesso às API's nativas do dispositivo sem precisar instalar qualquer dependência ou alterar código nativo. Na parte de armazenamento e sincronização dos dados foi usado a aplicação MongoDB,  software de banco de dados orientado a documentos livre, de código aberto e multiplataforma, escrito na linguagem C++.
 
-# RESULTADOS
+As principais entidades do sistema estão no diagrama de classe (UML) abaixo, incluindo também seus relacionamentos de colaboração e de generalização.
+![DiagramadeClasse (1) (1)](https://user-images.githubusercontent.com/61214124/120932589-d12dcd80-c6cc-11eb-96c3-dd984abb11d9.png)
 
-# INSTALAÇÃO
+
+Abaixo os diagramas de banco de dados. As principais entidades do sistema segundo as apresentações no modelo lógico e físico.
+
+![TCC_Conceitual_2](https://user-images.githubusercontent.com/61214124/120942316-8a58cb80-c6fe-11eb-816c-bbc4a7f01fc7.png)
+![TCC_Logico_2](https://user-images.githubusercontent.com/61214124/120942320-92b10680-c6fe-11eb-8dd9-85e5642e159a.png)
+
+# RESULTADOS
+Abaixo uma sequência de imagens que mostram o sistema desenvolvido.
+
+![WhatsApp Image 2021-06-06 at 7 48 11 PM](https://user-images.githubusercontent.com/61214124/120943299-7a43ea80-c704-11eb-9b35-098c41be031b.jpeg)
+![WhatsApp Image 2021-06-06 at 7 48 10 PM (4)](https://user-images.githubusercontent.com/61214124/120943436-3dc4be80-c705-11eb-8a85-8217ee076e19.jpeg) 
+![WhatsApp Image 2021-06-06 at 7 48 10 PM (3)](https://user-images.githubusercontent.com/61214124/120946925-820b8b00-c714-11eb-90c5-d5544f43f9e9.jpeg)
+![WhatsApp Image 2021-06-06 at 7 48 10 PM](https://user-images.githubusercontent.com/61214124/120946961-a5363a80-c714-11eb-95a1-6301b23064ab.jpeg)
+![WhatsApp Image 2021-06-06 at 7 48 10 PM (1)](https://user-images.githubusercontent.com/61214124/120947136-28579080-c715-11eb-9e5d-0a3502144312.jpeg)
+![WhatsApp Image 2021-06-06 at 7 48 09 PM (1)](https://user-images.githubusercontent.com/61214124/120947338-b16ec780-c715-11eb-9cfb-47b351b40f93.jpeg)
+![WhatsApp Image 2021-06-06 at 7 48 10 PM (2)](https://user-images.githubusercontent.com/61214124/120947353-baf82f80-c715-11eb-8409-0b13eba72438.jpeg)
+![WhatsApp Image 2021-06-06 at 7 48 11 PM (1)](https://user-images.githubusercontent.com/61214124/120947210-576e0200-c715-11eb-842a-92506747e9fd.jpeg)
+
+
+
 
 # REFERÊNCIAS
+https://www.figma.com/file/M8Yk53q9IGIpk8xQRloSKv/HOURMED?node-id=0%3A1
+https://github.com/cMarianno/HourMed
+
