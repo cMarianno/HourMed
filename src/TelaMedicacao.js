@@ -4,15 +4,13 @@ import { StyleSheet, TouchableOpacity, ImageBackground, Text, View, Alert} from 
 import { useFonts } from 'expo-font';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation, useRoute } from '@react-navigation/native'
+import api from "./services/api";
 
 export default function TelaMedicacao() {
     const route = useRoute();
     const params = route.params;
     const navigation = useNavigation();
-
-    function handlePress(){
-        navigation.navigate('TelaAdicionarTarefa', params);
-    }
+    var myloop = [];
 
     const [loaded] = useFonts({
         Roboto: require('../assets/fonts/Roboto-Thin.ttf'),
@@ -21,6 +19,28 @@ export default function TelaMedicacao() {
     if (!loaded) {
         return null;
     }
+
+    const makePage = async () => {
+        try {
+        const response = await api.post("/medicine/getMedicineByID", {
+            low_id: params.id,
+        }); 
+    
+        Alert.alert(response.data.message);
+
+        myloop = {
+            id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba1'+"1",
+            title: 'Dipirona'//response.data.message,
+        };  
+
+        navigation.navigate('TelaAdicionarTarefa', {type: params.type, id: params.id, email: params.email, myloop});
+        } catch (_err) {
+            console.log(_err);
+            Alert.alert(
+                "Houve um problema"
+            );
+        }
+    };
 
     return (
         <View style={styles.container}>
@@ -40,7 +60,7 @@ export default function TelaMedicacao() {
                 <TouchableOpacity
                     style={styles.buttons}
                     activeOpacity={0.8}
-                    onPress={handlePress}
+                    onPress={makePage}
                 >
                     <Text style={styles.textConta}>COMEÇAR</Text>
                 </TouchableOpacity>

@@ -1,6 +1,4 @@
 import React, { useState, useEffect }  from 'react';
-import DropDownPicker from 'react-native-dropdown-picker';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Alert} from 'react-native';
 import { useFonts } from 'expo-font';
@@ -21,8 +19,7 @@ export default function TelaLogin() {
                     password,
                 });
 
-                navigation.navigate('TelaMedicacao', {email, type: response.data.body.type});
-                // navigation.navigate('TelaMedicacao', {email, type: response.message});
+                navigation.navigate('TelaMedicacao', {email, type: response.data.body.type, id: response.data.body.id});
             } catch (_err) {
                 console.log(_err);
                 Alert.alert(

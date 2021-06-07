@@ -1,11 +1,12 @@
 import React, { useState, Component } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, Div, View, Image,ImageBackground, TouchableOpacity, FlatList, SafeAreaView, SectionList } from 'react-native';
+import { StyleSheet, Text, Div, View, Image,ImageBackground, TouchableOpacity, FlatList, SafeAreaView, SectionList, Alert } from 'react-native';
 import { useFonts } from 'expo-font';
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { color } from 'react-native-reanimated';
 import { Header } from 'react-native/Libraries/NewAppScreen';
-// import { ListItem, Icon } from 'react-native-elements'
+import api from "./services/api";
+
 export default function TelaAdicionarTarefa() {
   const [selectedId, setSelectedId] = useState('');
 
@@ -14,11 +15,13 @@ export default function TelaAdicionarTarefa() {
   const navigation = useNavigation();
 
   function handlePressResponsavel(){
-    navigation.navigate('TelaResponsavel', params);
+    if(params.type == 'high')
+      navigation.navigate('TelaResponsavel', params);
   }
 
   function handlePressReceitas(){
-    navigation.navigate('TelaReceitas', params);
+    if(params.type == 'high')
+      navigation.navigate('TelaReceitas', params);
   }
 
   function handlePressAdd(){
@@ -32,40 +35,42 @@ export default function TelaAdicionarTarefa() {
   if (!loaded) {
     return null;
   }
+  
 
   const DATA = [
     {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba1',
-      title: 'Primeiro Remédio',
+      id: params.myloop.id,
+      title: params.myloop.title,
     },
-    {
-      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f632',
-      title: 'Segundo Remédio',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d723',
-      title: 'Terceiro Remédio',
-    },
-    {
-      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f634',
-      title: 'Quarto Remédio',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d725',
-      title: 'Quinto Remédio',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d726',
-      title: 'Sexto Remédio',
-    },
-    {
-      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f637',
-      title: 'Sétimo Remédio',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d728',
-      title: 'Oitavo Remédio',
-    },
+    // {
+    //   id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f632',
+    //   title: 'Segundo Remédio',
+    // },
+    // {
+    //   id: '58694a0f-3da1-471f-bd96-145571e29d723',
+    //   title: 'Terceiro Remédio',
+    // },
+    // {
+    //   id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f634',
+    //   title: 'Quarto Remédio',
+    // },
+    // {
+    //   id: '58694a0f-3da1-471f-bd96-145571e29d725',
+    //   title: 'Quinto Remédio',
+    // },
+    // {
+    //   id: '58694a0f-3da1-471f-bd96-145571e29d726',
+    //   title: 'Sexto Remédio',
+    // },
+    // {
+    //   id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f637',
+    //   title: 'Sétimo Remédio',
+    // },
+    // {
+    //   id: '58694a0f-3da1-471f-bd96-145571e29d728',
+    //   title: 'Oitavo Remédio',
+    // },
+    
   ];
 
   const Item = ({ item, onPress, backgroundColor, textColor }) => (
@@ -73,7 +78,6 @@ export default function TelaAdicionarTarefa() {
       <Text style={[styles.title, textColor]}>{item.title}</Text>
     </TouchableOpacity>
   );
-
 
   const renderItem = ({ item }) => {
     const backgroundColor = item.id === selectedId ? "#47797C" : "#b8d9dc";
@@ -90,7 +94,6 @@ export default function TelaAdicionarTarefa() {
   };
 
   return (
-    
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTextHj}>HOJE</Text>
@@ -104,12 +107,12 @@ export default function TelaAdicionarTarefa() {
             />
           </SafeAreaView>
       <View style={styles.footer}>
-        <Image style={styles.icon1} source={require('../assets/img1.png')}></Image>
+        {params.type == 'high'? <Image style={styles.icon1} source={require('../assets/img1.png')}></Image> : <Text>{params.id}</Text> }
         <TouchableOpacity style={styles.icon2} activeOpacity={0.8} onPress={handlePressResponsavel}>
-          <Image  source={require('../assets/img2.png')}></Image>
+          {params.type == 'high'? <Image  source={require('../assets/img2.png')}></Image> : null }
         </TouchableOpacity>
         <TouchableOpacity style={styles.icon3} activeOpacity={0.8} onPress={handlePressReceitas}>
-          <Image  source={require('../assets/img3.png')}></Image>
+          {params.type == 'high'? <Image  source={require('../assets/img3.png')}></Image> : null }
         </TouchableOpacity>
       </View>
       <StatusBar style="auto" />
