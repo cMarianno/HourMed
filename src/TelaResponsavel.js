@@ -13,20 +13,16 @@ export default function TelaResponsavel() {
   const navigation = useNavigation();
 
   function handleAdicionarTarefas(){
-    navigation.navigate('TelaAdicionarTarefa');
+    navigation.navigate('TelaAdicionarTarefa', params);
   }
 
   function handlePressReceitas(){
-    navigation.navigate('TelaReceitas');
+    navigation.navigate('TelaReceitas', params);
   }
 
   function handleReceitasID(){
     navigation.navigate('TelaResponsavelID', params);
   }
-
-//   function handleNavigateToOrphanageDetails(id: number){
-//     navigation.navigate('OrphanagesDetails', { id });
-// }
 
   const [loaded] = useFonts({
     Roboto: require('../assets/fonts/Roboto-Thin.ttf'),

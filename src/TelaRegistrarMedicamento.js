@@ -1,24 +1,53 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { TextInputMask } from 'react-native-masked-text';
-import { StyleSheet, TouchableOpacity, Text, View, TextInput} from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View, TextInput, Alert} from 'react-native';
 import { useFonts } from 'expo-font';
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-
+import api from "./services/api";
 
 export default function TelaRegistrarMedicamento() {
+    const route = useRoute();
+    const params = route.params;
+    const navigation = useNavigation();
+    
+    const [name, setName] = useState(null);
+    const [dateInit, setDateInit] = useState(null);
+    const [dateEnd, setDateEnd] = useState(null); // necessário fazer validação para que a data não seja menor que hoje.
+    const [breakMed, setBreakMed] = useState(null); // vai ser treta pra validar e guardar no banco <- 
+
+    const makeAddMedicine = async () => {
+        const lowIDByEmail = await api.post("/user/getUsersByEmail", {
+            email: params.email
+        });
+
+        if (name.length === 0 || dateInit.length === 0 || dateEnd.length === 0 || breakMed.length === 0) {
+            Alert.alert("Preencha os campos para fazer o cadastro do medicamento!");
+        } else {
+            try {
+                const response = await api.post("/medicine/addMedicine", {
+                    name,
+                    date_to: dateInit,
+                    date_from: dateEnd,
+                    interval: "08:00",//breakMed,
+                    low_id: lowIDByEmail.data.body.lowID
+                });
+
+                navigation.navigate('TelaConfirmado', params);
+            } catch (_err) {
+                console.log(_err);
+                Alert.alert(
+                    "Houve um problema com o cadastro!"
+                );
+            }
+        }
+    };
 
     const [loaded] = useFonts({
         Roboto: require('../assets/fonts/Roboto-Thin.ttf'),
     });
-
-    const navigation = useNavigation();
-    
-    const [dateInit, setDateInit] = useState(null);
-    const [dateEnd, setDateEnd] = useState(null); // necessário fazer validação para que a data não seja menor que hoje.
-    const [breakMed, setBreakMed] = useState(null); // vai ser treta pra validar e guardar no banco <- 
 
     if (!loaded) {
         return null;
@@ -49,13 +78,15 @@ export default function TelaRegistrarMedicamento() {
                 style={styles.input}
                 type="text"
                 placeholder = "Luana Ferreira"
+                value={name}
+                onChangeText={setName}
             />
 
-            <Text style={styles.textTit}>Nome do dependente</Text>
+            {/* <Text style={styles.textTit}>ID do dependente</Text>
             <TextInput
                 style={styles.input}
-                placeholder = "Maria Luiza"
-            />
+                placeholder = "60a3c1fa94312c3a58832380f"
+            /> */}
 
             <Text style={styles.textTit}>Data inicio tratamento:</Text>
             <TextInputMask // campo mascarado (cobaia - com explicações) 
@@ -108,7 +139,7 @@ export default function TelaRegistrarMedicamento() {
 
         <View style={styles.espaco2}></View>
 
-            <TouchableOpacity activeOpacity={0.8} onPress={handlePressConcluir}>
+            <TouchableOpacity activeOpacity={0.8} onPress={makeAddMedicine}>
               <Text style={styles.textEntrar}>Registrar</Text>
             </TouchableOpacity>
         </View>

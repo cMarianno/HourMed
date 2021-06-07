@@ -11,7 +11,7 @@ export default function TelaAviso() {
 
     const navigation = useNavigation();
 
-    setTimeout(() => {navigation.navigate('TelaAdicionarTarefa', params);}, 5000)
+    setTimeout(() => {navigation.navigate('TelaMedicacao', params);}, 5000)
 
     const [loaded] = useFonts({
         Roboto: require('../assets/fonts/Roboto-Thin.ttf'),

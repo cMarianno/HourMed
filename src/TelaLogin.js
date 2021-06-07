@@ -19,7 +19,7 @@ export default function TelaLogin() {
                     password,
                 });
 
-                navigation.navigate('TelaMedicacao', {email, type: response.data.body.type, id: response.data.body.id});
+                navigation.navigate('TelaMedicacao', {email, type: response.data.body.type, id: response.data.body.id, low_id: response.data.body.low_id});
             } catch (_err) {
                 console.log(_err);
                 Alert.alert(

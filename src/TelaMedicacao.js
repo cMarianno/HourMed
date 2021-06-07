@@ -22,18 +22,20 @@ export default function TelaMedicacao() {
 
     const makePage = async () => {
         try {
-        const response = await api.post("/medicine/getMedicineByID", {
-            low_id: params.id,
-        }); 
-    
-        Alert.alert(response.data.message);
+            const response = await api.post("/medicine/getMedicineByID", {
+                low_id: params.type == 'high'? params.low_id : params.id
+            });             
 
-        myloop = {
-            id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba1'+"1",
-            title: 'Dipirona'//response.data.message,
-        };  
+            response.data.body.map((userData) => {
+                myloop.push(
+                    {
+                        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba1'+"1",
+                        title: userData.name,
+                    }
+                );
+            });
 
-        navigation.navigate('TelaAdicionarTarefa', {type: params.type, id: params.id, email: params.email, myloop});
+            navigation.navigate('TelaAdicionarTarefa', {type: params.type, id: params.id, low_i: params.low_id, email: params.email, myloop});
         } catch (_err) {
             console.log(_err);
             Alert.alert(

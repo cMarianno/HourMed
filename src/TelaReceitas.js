@@ -2,24 +2,26 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, Div, View, Image,ImageBackground, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import { color } from 'react-native-reanimated';
 import { Header } from 'react-native/Libraries/NewAppScreen';
 
 export default function TelaReceitas() {
 
+  const route = useRoute();
+  const params = route.params;
   const navigation = useNavigation();
 
   function handleAdicionar(){
-    navigation.navigate('TelaRegistrarMedicamento');
+    navigation.navigate('TelaRegistrarMedicamento', params);
   }
 
   function handleAdicionarTarefas(){
-    navigation.navigate('TelaAdicionarTarefa');
+    navigation.navigate('TelaAdicionarTarefa', params);
   }
 
   function handlePressResponsavel(){
-    navigation.navigate('TelaResponsavel');
+    navigation.navigate('TelaResponsavel', params);
   }
 
   const [loaded] = useFonts({

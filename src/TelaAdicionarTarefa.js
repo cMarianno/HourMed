@@ -24,10 +24,6 @@ export default function TelaAdicionarTarefa() {
       navigation.navigate('TelaReceitas', params);
   }
 
-  function handlePressAdd(){
-    navigation.navigate('TelaRegistrarMedicamento');
-  }
-
   const [loaded] = useFonts({
     Roboto: require('../assets/fonts/Roboto-Thin.ttf'),
   });
@@ -37,41 +33,16 @@ export default function TelaAdicionarTarefa() {
   }
   
 
-  const DATA = [
-    {
-      id: params.myloop.id,
-      title: params.myloop.title,
-    },
-    // {
-    //   id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f632',
-    //   title: 'Segundo Remédio',
-    // },
-    // {
-    //   id: '58694a0f-3da1-471f-bd96-145571e29d723',
-    //   title: 'Terceiro Remédio',
-    // },
-    // {
-    //   id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f634',
-    //   title: 'Quarto Remédio',
-    // },
-    // {
-    //   id: '58694a0f-3da1-471f-bd96-145571e29d725',
-    //   title: 'Quinto Remédio',
-    // },
-    // {
-    //   id: '58694a0f-3da1-471f-bd96-145571e29d726',
-    //   title: 'Sexto Remédio',
-    // },
-    // {
-    //   id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f637',
-    //   title: 'Sétimo Remédio',
-    // },
-    // {
-    //   id: '58694a0f-3da1-471f-bd96-145571e29d728',
-    //   title: 'Oitavo Remédio',
-    // },
-    
-  ];
+  const DATA = [];
+
+  params.myloop.map((userData) => {
+      DATA.push(
+          {
+              id: userData.id+userData.title,
+              title: userData.title,
+          }
+      );
+  });
 
   const Item = ({ item, onPress, backgroundColor, textColor }) => (
     <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
