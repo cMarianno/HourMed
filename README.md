@@ -15,10 +15,9 @@ Nossa equipe é composta por 5 pessoas, cada um possui skills específicas, mas 
 
 # Use Case
 
-![image](https://user-images.githubusercontent.com/61214124/120930136-77280a80-c6c2-11eb-878a-6ae6aa38f416.png)
-![image](https://user-images.githubusercontent.com/61214124/120930156-8ad37100-c6c2-11eb-8ca2-5cd219ac3ff3.png)
-![image](https://user-images.githubusercontent.com/61214124/120930604-624c7680-c6c4-11eb-8b49-8f4e86f5fedb.png)
-![image](https://user-images.githubusercontent.com/61214124/120930621-77290a00-c6c4-11eb-88a0-e6926718d296.png)
+![Use Case](https://user-images.githubusercontent.com/61214124/122839475-7a301700-d2ce-11eb-90c8-8597681d37c4.png)
+
+
 
 ## Requisitos Não Funcionais
 
