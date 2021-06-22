@@ -32,7 +32,8 @@ export default function TelaRegistrarMedicamento() {
                     date_to: dateInit,
                     date_from: dateEnd,
                     interval: "08:00",//breakMed,
-                    low_id: lowIDByEmail.data.body.lowID
+                    low_id: lowIDByEmail.data.body.lowID,
+                    qtde: 0
                 });
 
                 navigation.navigate('TelaConfirmado', params);
@@ -77,31 +78,24 @@ export default function TelaRegistrarMedicamento() {
             <TextInput
                 style={styles.input}
                 type="text"
-                placeholder = "Luana Ferreira"
+                placeholder = "Ex: Dorflex"
                 value={name}
                 onChangeText={setName}
             />
-
-            {/* <Text style={styles.textTit}>ID do dependente</Text>
-            <TextInput
-                style={styles.input}
-                placeholder = "60a3c1fa94312c3a58832380f"
-            /> */}
-
             <Text style={styles.textTit}>Data inicio tratamento:</Text>
-            <TextInputMask // campo mascarado (cobaia - com explicações) 
-                placeholder="Ex: 01/01/2001" // exemplo de como preencher o campo. ;)
+            <TextInputMask
+                placeholder="Ex: 01/01/2001"
                 style={styles.input}
-                type={'datetime'} // tipo da máscara.
+                type={'datetime'}
                 options={{
                     format: 'DD/MM/YYYY' // formato em que as informações serão exibidas após o preenchimento do campo.
                 }}
-                value={dateInit} // valor do campo.
+                value={dateInit}
                 onChangeText={value => {
                     setDateInit(value)
                 }}
                 keyboardType="numeric" // tipo do teclado que será exibido para o usuário.
-                returnKeyType="done" // tipo de botão do teclado exibido para o usuário.
+                returnKeyType="done"
             />
 
             <Text style={styles.textTit}>Data fim tratamento</Text>

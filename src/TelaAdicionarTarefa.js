@@ -6,6 +6,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import { color } from 'react-native-reanimated';
 import { Header } from 'react-native/Libraries/NewAppScreen';
 import api from "./services/api";
+import Clipboard from 'expo-clipboard';
 
 export default function TelaAdicionarTarefa() {
   const [selectedId, setSelectedId] = useState('');
@@ -57,7 +58,12 @@ export default function TelaAdicionarTarefa() {
     return (
       <Item
         item={item}
-        onPress={() => setSelectedId(item.id)}
+        onPress={() => {
+            setSelectedId(item.id)
+            const response = api.post("/medicine/tapMedicine", {
+              name: item.title,
+            });
+        }}
         backgroundColor={{ backgroundColor }}
         textColor={{ color }}
       />
@@ -78,7 +84,17 @@ export default function TelaAdicionarTarefa() {
             />
           </SafeAreaView>
       <View style={styles.footer}>
-        {params.type == 'high'? <Image style={styles.icon1} source={require('../assets/img1.png')}></Image> : <Text>{params.id}</Text> }
+        {
+          params.type == 'high'
+            ? 
+          <Image style={styles.icon1} source={require('../assets/img1.png')}></Image> 
+            : 
+            <Text 
+              onPress={()=>{Clipboard.setString(params.id); Alert.alert("ID Copiado")}}
+              style={{color: 'red', fontSize: 14 , fontFamily:'Roboto', fontStyle: 'bold', textAlign: 'center', marginTop: 3, marginLeft: 25, marginBottom: 17}}> 
+                              {params.id}
+            </Text>
+        }
         <TouchableOpacity style={styles.icon2} activeOpacity={0.8} onPress={handlePressResponsavel}>
           {params.type == 'high'? <Image  source={require('../assets/img2.png')}></Image> : null }
         </TouchableOpacity>

@@ -1,12 +1,35 @@
-import React from 'react';
+import React, { useState, Component } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, Div, View, Image,ImageBackground, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, Div, View, Image,ImageBackground, TouchableOpacity, SafeAreaView, FlatList, Alert} from 'react-native';
 import { useFonts } from 'expo-font';
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { color } from 'react-native-reanimated';
 import { Header } from 'react-native/Libraries/NewAppScreen';
+import api from "./services/api";
+import AwesomeAlert from 'react-native-awesome-alerts';
 
 export default function TelaReceitas() {
+  const [selectedId, setSelectedId] = useState('');
+
+  async function showAlert1() {  
+    Alert.alert(  
+        'Atenção',  
+        'Deseja Exluir Este Medicamento?',  
+        [  
+            {  
+                text: 'Fechar',  
+                onPress: () => console.log('Cancel Pressed'),  
+                style: 'cancel',  
+            },  
+            {
+              text: 'Excluir',
+              onPress: () => Alert.alert("Medicamento Excluido"),
+            },  
+        ]  
+    );  
+
+
+  }  
 
   const route = useRoute();
   const params = route.params;
@@ -32,6 +55,39 @@ export default function TelaReceitas() {
     return null;
   }
 
+  const DATA = [];
+
+  params.myloop.map((userData) => {
+      DATA.push(
+        {
+            id: userData.id+userData.title,
+            title: userData.title,
+            qtde: userData.qtde
+        }
+      );
+  });
+
+  const Item = ({ item, onPress, backgroundColor, textColor }) => (
+    <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
+      <Text style={[styles.title, textColor]}>{item.title}</Text>
+      <Text style={[styles.subtitleBox, textColor]}>{item.qtde}</Text>
+    </TouchableOpacity>
+  );
+
+  const renderItem = ({ item }) => {
+    const backgroundColor = "#b8d9dc";
+    const color = 'black';
+
+    return (
+      <Item
+        item={item}
+        onPress={() => {setSelectedId(item.id); showAlert1()}}
+        backgroundColor={{ backgroundColor }}
+        textColor={{ color }}
+      />
+    );
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -40,11 +96,14 @@ export default function TelaReceitas() {
       </TouchableOpacity>
         <Text style={styles.headerTextResp}>RECEITAS</Text>
       </View>
-      <View style={styles.espacos}></View>
-      <Image style={styles.logo} source={ require('../assets/SintomasDiarios.png') }/>
-      <Text style={styles.textPrincipal}>TRATAMENTO</Text>
-      <Text style={styles.textSecundario}>Receba lembretes de vencimento{"\n"}da receita e consulta médica.</Text>
-      <View style={styles.espacos}></View>
+      <SafeAreaView style={styles.container}>
+            <FlatList
+              data={DATA}
+              renderItem={renderItem}
+              keyExtractor={(item) => item.id}
+              extraData={selectedId}
+            />
+          </SafeAreaView>
       <View style={styles.footer}>
       <Text style={styles.icon}></Text>
       
@@ -64,12 +123,11 @@ export default function TelaReceitas() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
     backgroundColor: '#EDFBFD',
+    marginTop: StatusBar.currentHeight || 0,
   },
   header: {
-    flex: 0.25,
+    flex: 0.15,
     alignItems: 'center',
     backgroundColor: '#47797C',
     paddingTop:50,
@@ -118,7 +176,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     width:"100%",
-    flex:0.20,
+    flex:0.14,
     backgroundColor:"#b8d9dc",
     flexDirection: 'row'
   },
@@ -138,5 +196,27 @@ const styles = StyleSheet.create({
     width:"33%",
     resizeMode: 'contain'
   },
-
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 32,
+  },
+  subtitleBox: {
+    fontSize: 32,
+    textAlign: 'right',
+    marginTop: -48
+  },
+  scroll:{
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+  },
+  centerImage: {
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    resizeMode: 'contain'
+  }
 });

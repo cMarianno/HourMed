@@ -12,8 +12,9 @@ export default function TelaUsuarioComum() {
     let [password, setPassword] = useState("");
     let [confirmPass, setConfirmPass] = useState("");
     let [username, setUsername] = useState("");
+    let [dropdown, setDropdown] = useState("");
     let errors = "";
-
+    
     const makeSign = async () => {
         if (email.length === 0 || password.length === 0 || confirmPass.length === 0 || username.length === 0)
             errors = "Preencha os campos para fazer a criação da sua senha!";
@@ -23,13 +24,15 @@ export default function TelaUsuarioComum() {
 
         if(errors == ""){
             try {
-                await api.post("/user/signup", {
-                    email,
-                    password,
-                    username
+                const response = await api.post("/user/signup", {
+                    email: email,
+                    password: password,
+                    type: dropdown.value,
+                    name: username,
+                    lowID: "0"
                 });
     
-                navigation.navigate('TelaMedicacao');
+                navigation.navigate('TelaMedicacao', {email, type: dropdown.value, id: response.data.body._id, low_id: "0"});
             } catch (_err) {
                 console.log(_err);
                 Alert.alert(
@@ -64,14 +67,15 @@ export default function TelaUsuarioComum() {
 
             <DropDownPicker
                 items={[
-                    {label: 'Responsável', value: 'responsavel'},
-                    {label: 'Usuário', value: 'usuario', selected: true},
+                    {label: 'Responsável', value: 'high'},
+                    {label: 'Usuário', value: 'low', selected: true},
                     
                 ]}
                 defaultIndex={1}
-                defaultValue="usuario"
+                defaultValue="low"
                 containerStyle={{height: 40, marginTop: '5%', width: '80%'}}
-                onChangeItem={item => console.log(item.label, item.value)}
+                value={dropdown}
+                onChangeItem={setDropdown}
 
             />
 
